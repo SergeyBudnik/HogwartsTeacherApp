@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/primary_normal</color>
+    <color name="colorPrimaryDark">@color/primary_dark</color>
+    <color name="colorAccent">@color/primary_normal</color>
+
+    <color name="primary_dark">#2A6891</color>
+    <color name="primary_normal">#317AAA</color>
+    <color name="primary_light">#398DC4</color>
+
+    <color name="danger">#E64848</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="gray_very_dark">#222222</color>
+    <color name="gray_dark">#555555</color>
+    <color name="gray_medium">#888888</color>
+    <color name="gray_light">#BBBBBB</color>
+    <color name="gray_very_light">#EEEEEE</color>
+
+    <color name="gray_very_dark_transparent">#33222222</color>
+    <color name="gray_dark_transparent">#33555555</color>
+    <color name="gray_medium_transparent">#33888888</color>
+    <color name="gray_light_transparent">#33BBBBBB</color>
+    <color name="gray_very_light_transparent">#33EEEEEE</color>
+
+    <color name="green">#00BB00</color>
+</resources>

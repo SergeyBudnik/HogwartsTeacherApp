@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hogwarts_eng_school.hogwarts_teacher">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/launcher_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/launcher_icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <meta-data android:name="io.fabric.ApiKey" android:value="ac9391d74166e526723be6a988b21a3305f0a642"/>
+
+        <activity android:name=".StartActivity_" android:screenOrientation="sensorPortrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".LoginActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".LoadingActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".TimetableActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".MyLessonsActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".GroupActivity_" android:screenOrientation="sensorPortrait"/>
+    </application>
+</manifest>

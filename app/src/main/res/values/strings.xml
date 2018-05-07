@@ -1,0 +1,72 @@
+<resources>
+    <string name="fabric_api_key" translatable="false">ac9391d74166e526723be6a988b21a3305f0a642</string>
+
+    <string name="app_name">Hogwarts Teacher</string>
+
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="do_login">Войти</string>
+
+    <string name="error_auth_title">Ошибка авторизации</string>
+    <string name="error_auth_desc">Проверьте правильность логина и пароля</string>
+
+    <string name="error_network_title">Ошибка подключения</string>
+    <string name="error_network_desc">Проверьте наличие соединения</string>
+
+    <string name="loading">Загрузка…</string>
+    <string name="loading_failed_title">Возникла ошибка</string>
+    <string name="loading_failed_desc">Нажмите для повторной загрузки</string>
+
+    <string name="menu_today_lessons">Сегодняшние занятия</string>
+    <string name="menu_my_lessons">Мои занятия</string>
+    <string name="menu_exit">Выйти</string>
+    <string name="menu_version">Версия %1$s</string>
+
+    <string name="page_today_lessons">Сегодняшние занятия</string>
+    <string name="page_my_lessons">Мои занятия</string>
+    <string name="page_lesson">Занятие</string>
+
+    <string name="lesson_time">%1$s - %2$s</string>
+
+    <string name="t_07_00">07:00</string>
+    <string name="t_07_30">07:30</string>
+    <string name="t_08_00">08:00</string>
+    <string name="t_08_30">08:30</string>
+    <string name="t_09_00">09:00</string>
+    <string name="t_09_30">09:30</string>
+    <string name="t_10_00">10:00</string>
+    <string name="t_10_30">10:30</string>
+    <string name="t_11_00">11:00</string>
+    <string name="t_11_30">11:30</string>
+    <string name="t_12_00">12:00</string>
+    <string name="t_12_30">12:30</string>
+    <string name="t_13_00">13:00</string>
+    <string name="t_13_30">13:30</string>
+    <string name="t_14_00">14:00</string>
+    <string name="t_14_30">14:30</string>
+    <string name="t_15_00">15:00</string>
+    <string name="t_15_30">15:30</string>
+    <string name="t_16_00">16:00</string>
+    <string name="t_16_30">16:30</string>
+    <string name="t_17_00">17:00</string>
+    <string name="t_17_30">17:30</string>
+    <string name="t_18_00">18:00</string>
+    <string name="t_18_30">18:30</string>
+    <string name="t_19_00">19:00</string>
+    <string name="t_19_30">19:30</string>
+    <string name="t_20_00">20:00</string>
+    <string name="t_20_30">20:30</string>
+    <string name="t_21_00">21:00</string>
+
+    <string name="current_day">%1$s, %2$02d.%3$02d.%4$d</string>
+
+    <string name="monday_short">Пн</string>
+    <string name="tuesday_short">Вт</string>
+    <string name="wednesday_short">Ср</string>
+    <string name="thursday_short">Чт</string>
+    <string name="friday_short">Пт</string>
+    <string name="saturday_short">Сб</string>
+    <string name="sunday_short">Вс</string>
+
+    <string name="img_content">img content</string>
+</resources>
