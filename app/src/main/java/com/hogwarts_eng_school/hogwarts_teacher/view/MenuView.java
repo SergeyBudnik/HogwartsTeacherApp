@@ -12,11 +12,10 @@ import com.hogwarts_eng_school.hogwarts_teacher.BaseActivity;
 import com.hogwarts_eng_school.hogwarts_teacher.LoginActivity_;
 import com.hogwarts_eng_school.hogwarts_teacher.MyLessonsActivity_;
 import com.hogwarts_eng_school.hogwarts_teacher.R;
-import com.hogwarts_eng_school.hogwarts_teacher.TimetableActivity_;
+import com.hogwarts_eng_school.hogwarts_teacher.TodayLessonsActivity_;
 import com.hogwarts_eng_school.hogwarts_teacher.data.AppUserInfo;
 import com.hogwarts_eng_school.hogwarts_teacher.service.AuthService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TeachersService;
-import com.hogwarts_eng_school.hogwarts_teacher.utils.BitmapUtils;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -90,7 +89,7 @@ public class MenuView extends RelativeLayout {
 
     @Click(R.id.today_lessons)
     void onTodayLessonsClick() {
-        getActivity().redirect(TimetableActivity_.class, 0, 0, true);
+        getActivity().redirect(TodayLessonsActivity_.class, 0, 0, true);
     }
 
     @Click(R.id.exit)

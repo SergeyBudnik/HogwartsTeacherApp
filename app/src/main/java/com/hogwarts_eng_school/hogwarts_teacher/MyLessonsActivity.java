@@ -3,10 +3,8 @@ package com.hogwarts_eng_school.hogwarts_teacher;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.hogwarts_eng_school.hogwarts_teacher.adapter.MyLessonsListAdapter;
-import com.hogwarts_eng_school.hogwarts_teacher.data.DayOfWeek;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Lesson;
 import com.hogwarts_eng_school.hogwarts_teacher.service.CabinetsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.LessonsService;
@@ -32,8 +30,6 @@ public class MyLessonsActivity extends BaseActivity {
     DrawerLayout rootView;
     @ViewById(R.id.menu)
     MenuView menuView;
-    @ViewById(R.id.current_date)
-    TextView currentDateView;
     @ViewById(R.id.lessons)
     ListView lessons;
 
@@ -51,7 +47,6 @@ public class MyLessonsActivity extends BaseActivity {
     void init() {
         menuView.setCurrentPage(MenuView.Page.MY_LESSONS);
 
-        setTime();
         setLessons();
     }
 
@@ -69,17 +64,6 @@ public class MyLessonsActivity extends BaseActivity {
         }
 
         redirect(GroupActivity_.class, 0, 0, false, extras);
-    }
-
-    private void setTime() {
-        DayOfWeek currentDay = timeService.getCurrentDay().orElseThrow(RuntimeException::new);
-
-        currentDateView.setText(getResources().getString(R.string.current_day,
-                getResources().getString(currentDay.getShortNameId()),
-                timeService.getDate(),
-                timeService.getMonth() + 1,
-                timeService.getYear()
-        ));
     }
 
     private void setLessons() {

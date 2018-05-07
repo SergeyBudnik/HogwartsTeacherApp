@@ -3,18 +3,18 @@ package com.hogwarts_eng_school.hogwarts_teacher.view;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hogwarts_eng_school.hogwarts_teacher.R;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Group;
+import com.hogwarts_eng_school.hogwarts_teacher.data.Cabinet;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Lesson;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Teacher;
 import com.hogwarts_eng_school.hogwarts_teacher.service.AuthService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TeachersService;
-import com.hogwarts_eng_school.hogwarts_teacher.utils.BitmapUtils;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EViewGroup;
@@ -42,6 +42,11 @@ public class TodayLessonsListItemView extends RelativeLayout {
     @ViewById(R.id.student_6)
     ImageView studentView6;
 
+    @ViewById(R.id.cabinet_label)
+    View cabinetLabelView;
+    @ViewById(R.id.cabinet)
+    TextView cabinetView;
+
     @Bean
     AuthService authService;
     @Bean
@@ -55,7 +60,10 @@ public class TodayLessonsListItemView extends RelativeLayout {
         super(context, attrs);
     }
 
-    public void bind(Group group, Lesson lesson, List<Student> students) {
+    public void bind(Cabinet cabinet, Lesson lesson, List<Student> students, boolean newCabinet) {
+        cabinetLabelView.setVisibility(newCabinet ? VISIBLE : GONE);
+        cabinetView.setText(cabinet.getName());
+
         Teacher teacher = teachersService.getTeacher(lesson.getTeacherId()).orElseThrow(RuntimeException::new);
 
         iconView.configure(

@@ -57,22 +57,20 @@ public class LessonsService {
         return Stream.of(res).sortBy(l -> l.getStartTime().getOrder()).toList();
     }
 
-    public List<Lesson> getTodayLessons(Cabinet cabinet) {
+    public List<Lesson> getTodayLessons() {
         List<Lesson> res = new ArrayList<>();
 
         DayOfWeek currentDay = timeService.getCurrentDay().orElseThrow(RuntimeException::new);
 
         for (Group group : groupsService.getGroups()) {
-            if (Objects.equals(group.getCabinetId(), cabinet.getId())) {
-                for (Lesson lesson : group.getLessons()) {
-                    if (lesson.getDay() == currentDay) {
-                        res.add(lesson);
-                    }
+            for (Lesson lesson : group.getLessons()) {
+                if (lesson.getDay() == currentDay) {
+                    res.add(lesson);
                 }
             }
         }
 
-        return Stream.of(res).sortBy(l -> l.getStartTime().getOrder()).toList();
+        return res;
     }
 
     public Optional<Group> getGroup(long lessonId) {

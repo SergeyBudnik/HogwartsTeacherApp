@@ -3,12 +3,8 @@ package com.hogwarts_eng_school.hogwarts_teacher;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.annimon.stream.Stream;
 import com.hogwarts_eng_school.hogwarts_teacher.adapter.TodayLessonsListAdapter;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Cabinet;
-import com.hogwarts_eng_school.hogwarts_teacher.data.DayOfWeek;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Lesson;
 import com.hogwarts_eng_school.hogwarts_teacher.service.CabinetsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.LessonsService;
@@ -28,21 +24,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@EActivity(R.layout.activity_timetable)
-public class TimetableActivity extends BaseActivity {
+@EActivity(R.layout.activity_today_lessons)
+public class TodayLessonsActivity extends BaseActivity {
     @ViewById(R.id.root)
     DrawerLayout rootView;
     @ViewById(R.id.menu)
     MenuView menuView;
-    @ViewById(R.id.current_date)
-    TextView currentDateView;
-    @ViewById(R.id.cabinet)
-    TextView cabinetView;
     @ViewById(R.id.lessons)
     ListView lessonsView;
 
     @Bean
-    TodayLessonsListAdapter timetableListAdapter;
+    TodayLessonsListAdapter todayLessonsListAdapter;
 
     @Bean
     LessonsService lessonsService;
@@ -51,48 +43,18 @@ public class TimetableActivity extends BaseActivity {
     @Bean
     TimeService timeService;
 
-    private List<Cabinet> cabinets = new ArrayList<>();
-    private int currentCabinetIndex = 0;
-
     @AfterViews
     void init() {
         menuView.setCurrentPage(MenuView.Page.TODAY_LESSONS);
 
-        cabinets = Stream.of(cabinetsService.getCabinets())
-                .filter(it -> !lessonsService.getTodayLessons(it).isEmpty())
-                .toList();
+        lessonsView.setAdapter(todayLessonsListAdapter);
 
-        lessonsView.setAdapter(timetableListAdapter);
-
-        DayOfWeek currentDay = timeService.getCurrentDay().orElseThrow(RuntimeException::new);
-
-        currentDateView.setText(getResources().getString(R.string.current_day,
-                getResources().getString(currentDay.getShortNameId()),
-                timeService.getDate(),
-                timeService.getMonth() + 1,
-                timeService.getYear()
-        ));
-
-        fillPage();
+        setLessons();
     }
 
     @Click(R.id.menu_button)
     void onMenuClick() {
         rootView.openDrawer(Gravity.START);
-    }
-
-    @Click(R.id.previous_cabinet)
-    void onPreviousCabinetClick() {
-        currentCabinetIndex = currentCabinetIndex == 0 ? cabinets.size() - 1 : currentCabinetIndex - 1;
-
-        fillPage();
-    }
-
-    @Click(R.id.next_cabinet)
-    void onNextCabinetClick() {
-        currentCabinetIndex = currentCabinetIndex == cabinets.size() - 1 ? 0 : currentCabinetIndex + 1;
-
-        fillPage();
     }
 
     @ItemClick(R.id.lessons)
@@ -106,22 +68,21 @@ public class TimetableActivity extends BaseActivity {
         redirect(GroupActivity_.class, 0, 0, false, extras);
     }
 
-    private void fillPage() {
-        cabinetView.setText(cabinets.get(currentCabinetIndex).getName());
-
+    private void setLessons() {
         List<TodayLessonsListAdapter.Item> items = new ArrayList<>();
 
-        for (Lesson lesson : lessonsService.getTodayLessons(cabinetsService.getCabinets().get(currentCabinetIndex))) {
+        for (Lesson lesson : lessonsService.getTodayLessons()) {
             items.add(TodayLessonsListAdapter.Item
                     .builder()
                     .group(lessonsService.getGroup(lesson.getId()).orElseThrow(RuntimeException::new))
+                    .cabinet(lessonsService.getCabinet(lesson.getId()).orElseThrow(RuntimeException::new))
                     .lesson(lesson)
                     .students(lessonsService.getStudents(lesson.getId()).orElseThrow(RuntimeException::new))
                     .build()
             );
         }
 
-        timetableListAdapter.setItems(items);
-        timetableListAdapter.notifyDataSetChanged();
+        todayLessonsListAdapter.setItems(items);
+        todayLessonsListAdapter.notifyDataSetChanged();
     }
 }
