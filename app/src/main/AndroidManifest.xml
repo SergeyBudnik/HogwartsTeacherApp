@@ -26,6 +26,7 @@
         <activity android:name=".LoadingActivity_" android:screenOrientation="sensorPortrait"/>
         <activity android:name=".TodayLessonsActivity_" android:screenOrientation="sensorPortrait"/>
         <activity android:name=".MyLessonsActivity_" android:screenOrientation="sensorPortrait"/>
-        <activity android:name=".GroupActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".LessonActivity_" android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".AddStudentAttendanceActivity_" android:screenOrientation="sensorPortrait"/>
     </application>
 </manifest>

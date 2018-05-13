@@ -10,11 +10,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.annimon.stream.Optional;
 import com.annimon.stream.function.Consumer;
 import com.hogwarts_eng_school.hogwarts_teacher.BaseActivity;
 import com.hogwarts_eng_school.hogwarts_teacher.R;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
+import com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendance;
+import com.hogwarts_eng_school.hogwarts_teacher.service.StudentAttendanceService;
 
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
@@ -30,9 +34,14 @@ public class StudentsListItemView extends RelativeLayout {
     TextView nameView;
     @ViewById(R.id.call)
     ImageView callView;
+    @ViewById(R.id.attendance)
+    ImageView attendanceView;
+
+    @Bean
+    StudentAttendanceService studentAttendanceService;
 
     private Student student;
-    private Consumer<Long> onStudentAttendanceClick;
+    private Consumer<Student> onStudentAttendanceClick;
 
     public StudentsListItemView(Context context) {
         super(context);
@@ -42,7 +51,7 @@ public class StudentsListItemView extends RelativeLayout {
         super(context, attrs);
     }
 
-    public void bind(Student student, Consumer<Long> onStudentAttendanceClick) {
+    public void bind(Student student, Consumer<Student> onStudentAttendanceClick) {
         this.student = student;
         this.onStudentAttendanceClick = onStudentAttendanceClick;
 
@@ -52,6 +61,34 @@ public class StudentsListItemView extends RelativeLayout {
                 getResources().getColor(student.getPhones().isEmpty() ? R.color.gray_light : R.color.green),
                 PorterDuff.Mode.SRC_IN
         );
+
+        setAttendance(student);
+    }
+
+    private void setAttendance(Student student) {
+        Optional<StudentAttendance> studentAttendance = studentAttendanceService.getAttendance(student.getId());
+
+        int color;
+
+        if (studentAttendance.isPresent()) {
+            switch (studentAttendance.get().getType()) {
+                case VISITED:
+                    color = getResources().getColor(R.color.success);
+                    break;
+                case VALID_SKIP:
+                    color = getResources().getColor(R.color.warning);
+                    break;
+                case INVALID_SKIP:
+                    color = getResources().getColor(R.color.danger);
+                    break;
+                default:
+                    throw new RuntimeException();
+            }
+        } else {
+            color = getResources().getColor(R.color.gray_medium);
+        }
+
+        attendanceView.getDrawable().setColorFilter(color, PorterDuff.Mode.SRC_IN);
     }
 
     @Click(R.id.call)
@@ -75,6 +112,6 @@ public class StudentsListItemView extends RelativeLayout {
 
     @Click(R.id.attendance)
     void onAttendanceClick() {
-        onStudentAttendanceClick.accept(student.getId());
+        onStudentAttendanceClick.accept(student);
     }
 }

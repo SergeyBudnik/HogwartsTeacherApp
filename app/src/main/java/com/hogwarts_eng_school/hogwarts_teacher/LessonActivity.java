@@ -1,24 +1,30 @@
 package com.hogwarts_eng_school.hogwarts_teacher;
 
+import android.content.Intent;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.hogwarts_eng_school.hogwarts_teacher.adapter.StudentsListAdapter;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Lesson;
+import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
 import com.hogwarts_eng_school.hogwarts_teacher.service.LessonsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.StudentsService;
 import com.hogwarts_eng_school.hogwarts_teacher.view.MenuView;
-import com.hogwarts_eng_school.hogwarts_teacher.view.StudentAttendancePopupView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.Collections;
+
 @EActivity(R.layout.activity_group)
-public class GroupActivity extends BaseActivity {
+public class LessonActivity extends BaseActivity {
+    public static final int VIEW_LESSON_ACTION_ID = 1;
+
     public static final String EXTRA_GROUP_ID = "groupId";
     public static final String EXTRA_LESSON_ID = "lessonId";
 
@@ -30,9 +36,6 @@ public class GroupActivity extends BaseActivity {
     TextView timeView;
     @ViewById(R.id.students)
     ListView studentsView;
-
-    @ViewById(R.id.attendance_popup)
-    StudentAttendancePopupView studentAttendancePopupView;
 
     @Bean
     StudentsListAdapter studentsListAdapter;
@@ -61,18 +64,42 @@ public class GroupActivity extends BaseActivity {
                 getResources().getString(lesson.getFinishTime().getTranslationId())
         ));
 
+        setStudents();
+    }
+
+    @Click(R.id.back)
+    void onBackClick() {
+        finishRedirectForResult(0, 0, RESULT_OK);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finishRedirectForResult(0, 0, RESULT_OK);
+    }
+
+    @UiThread
+    void setStudents() {
         studentsListAdapter.setItems(studentsService.getGroupStudents(groupId));
         studentsListAdapter.setOnStudentAttendanceClick(this::showAttendancePopup);
 
         studentsView.setAdapter(studentsListAdapter);
     }
 
-    @Click(R.id.back)
-    void onBackClick() {
-        finish();
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == AddStudentAttendanceActivity.ADD_ATTENDANCE_ACTION_ID) {
+                setStudents();
+            }
+        }
     }
 
-    private void showAttendancePopup(long studentId) {
-        studentAttendancePopupView.show();
+    private void showAttendancePopup(Student student) {
+        redirectForResult(
+                AddStudentAttendanceActivity_.class,
+                0, 0,
+                AddStudentAttendanceActivity.ADD_ATTENDANCE_ACTION_ID,
+                Collections.singletonMap(AddStudentAttendanceActivity.EXTRA_STUDENT_ID, student.getId())
+        );
     }
 }

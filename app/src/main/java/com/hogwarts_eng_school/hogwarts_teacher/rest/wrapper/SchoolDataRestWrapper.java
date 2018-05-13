@@ -5,11 +5,13 @@ import com.hogwarts_eng_school.hogwarts_teacher.rest.listener.RestListener;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.CabinetsRest;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.GroupsRest;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.Headers;
+import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.StudentAttendanceRest;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.StudentsRest;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.TeacherRest;
 import com.hogwarts_eng_school.hogwarts_teacher.service.AuthService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.CabinetsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.GroupsService;
+import com.hogwarts_eng_school.hogwarts_teacher.service.StudentAttendanceService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.StudentsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TeachersService;
 
@@ -30,6 +32,8 @@ public class SchoolDataRestWrapper extends AbstractAuthWrapper {
     CabinetsRest cabinetsRest;
     @RestService
     TeacherRest teacherRest;
+    @RestService
+    StudentAttendanceRest studentAttendanceRest;
 
     @Bean
     AuthService authService;
@@ -41,6 +45,8 @@ public class SchoolDataRestWrapper extends AbstractAuthWrapper {
     CabinetsService cabinetsService;
     @Bean
     TeachersService teachersService;
+    @Bean
+    StudentAttendanceService studentAttendanceService;
 
     @Background
     public void load(RestListener<Void> listener) {
@@ -49,13 +55,14 @@ public class SchoolDataRestWrapper extends AbstractAuthWrapper {
 
             authenticateTo(
                     authService.getUserInfo().map(AppUserInfo::getAuthToken).orElseThrow(RuntimeException::new),
-                    groupsRest, studentsRest, cabinetsRest, teacherRest
+                    groupsRest, studentsRest, cabinetsRest, teacherRest, studentAttendanceRest
             );
 
             groupsService.setGroups(groupsRest.getAllGroups());
             studentsService.setStudents(studentsRest.getAllStudents());
             cabinetsService.setCabinets(cabinetsRest.getAllCabinets());
             teachersService.setTeachers(teacherRest.getTeachers());
+            studentAttendanceService.setAttendances(studentAttendanceRest.getAllAttendances());
 
             listener.onSuccess(null);
         } catch (HttpStatusCodeException e) {

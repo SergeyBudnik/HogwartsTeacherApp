@@ -8,9 +8,17 @@
     <color name="primary_normal">#317AAA</color>
     <color name="primary_light">#398DC4</color>
 
-    <color name="danger">#E64848</color>
+    <color name="primary_normal_transparent">#EE317AAA</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="danger">#bb0600</color>
+    <color name="warning">#BB8600</color>
+    <color name="success">#00BB00</color>
 
     <color name="white">#FFFFFF</color>
+    <color name="white_transparent">#CCFFFFFF</color>
+
     <color name="black">#000000</color>
 
     <color name="gray_very_dark">#222222</color>

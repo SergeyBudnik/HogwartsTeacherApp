@@ -2,11 +2,14 @@ package com.hogwarts_eng_school.hogwarts_teacher.service;
 
 import com.annimon.stream.Stream;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
+import com.hogwarts_eng_school.hogwarts_teacher.data.StudentStatusType;
 
 import org.androidannotations.annotations.EBean;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.hogwarts_eng_school.hogwarts_teacher.data.StudentStatusType.GROUP_ASSIGNED;
 
 @EBean(scope = EBean.Scope.Singleton)
 public class StudentsService {
@@ -23,6 +26,8 @@ public class StudentsService {
     }
 
     public void setStudents(List<Student> students) {
-        this.students = students;
+        this.students = Stream.of(students)
+                .filter(it -> it.getStatusType() == GROUP_ASSIGNED)
+                .toList();
     }
 }

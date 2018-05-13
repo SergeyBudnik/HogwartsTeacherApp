@@ -7,13 +7,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.annimon.stream.Optional;
 import com.hogwarts_eng_school.hogwarts_teacher.R;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Cabinet;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Lesson;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
+import com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendance;
 import com.hogwarts_eng_school.hogwarts_teacher.service.AuthService;
+import com.hogwarts_eng_school.hogwarts_teacher.service.StudentAttendanceService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TeachersService;
-import com.hogwarts_eng_school.hogwarts_teacher.utils.BitmapUtils;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EViewGroup;
@@ -55,6 +57,8 @@ public class MyLessonsListItemView extends RelativeLayout {
     AuthService authService;
     @Bean
     TeachersService teachersService;
+    @Bean
+    StudentAttendanceService studentAttendanceService;
 
     public void bind(Cabinet cabinet, Lesson lesson, List<Student> students) {
         String login = authService.getUserInfo().orElseThrow(RuntimeException::new).getLogin();
@@ -74,20 +78,43 @@ public class MyLessonsListItemView extends RelativeLayout {
                 getResources().getString(lesson.getFinishTime().getTranslationId())
         ));
 
-        setStudentStatus(studentView1, students.size() >= 1);
-        setStudentStatus(studentView2, students.size() >= 2);
-        setStudentStatus(studentView3, students.size() >= 3);
-        setStudentStatus(studentView4, students.size() >= 4);
-        setStudentStatus(studentView5, students.size() >= 5);
-        setStudentStatus(studentView6, students.size() >= 6);
+        setStudentStatus(studentView1, students.size() >= 1 ? students.get(0) : null);
+        setStudentStatus(studentView2, students.size() >= 2 ? students.get(1) : null);
+        setStudentStatus(studentView3, students.size() >= 3 ? students.get(2) : null);
+        setStudentStatus(studentView4, students.size() >= 4 ? students.get(3) : null);
+        setStudentStatus(studentView5, students.size() >= 5 ? students.get(4) : null);
+        setStudentStatus(studentView6, students.size() >= 6 ? students.get(5) : null);
     }
 
-    private void setStudentStatus(ImageView studentView, boolean exists) {
-        studentView.setImageDrawable(getResources().getDrawable(exists ? R.drawable.student : R.drawable.no_student));
+    private void setStudentStatus(ImageView studentView, Student student) {
+        studentView.setImageDrawable(getResources().getDrawable(student != null ? R.drawable.student : R.drawable.no_student));
 
-        studentView.setColorFilter(
-                getResources().getColor(R.color.gray_dark),
-                PorterDuff.Mode.SRC_IN
-        );
+        int color;
+
+        if (student == null) {
+            color = getResources().getColor(R.color.gray_dark);
+        } else {
+            Optional<StudentAttendance> studentAttendance = studentAttendanceService.getAttendance(student.getId());
+
+            if (studentAttendance.isPresent()) {
+                switch (studentAttendance.get().getType()) {
+                    case VISITED:
+                        color = getResources().getColor(R.color.success);
+                        break;
+                    case VALID_SKIP:
+                        color = getResources().getColor(R.color.warning);
+                        break;
+                    case INVALID_SKIP:
+                        color = getResources().getColor(R.color.danger);
+                        break;
+                    default:
+                        throw new RuntimeException();
+                }
+            } else {
+                color = getResources().getColor(R.color.gray_medium);
+            }
+        }
+
+        studentView.setColorFilter(color, PorterDuff.Mode.SRC_IN);
     }
 }

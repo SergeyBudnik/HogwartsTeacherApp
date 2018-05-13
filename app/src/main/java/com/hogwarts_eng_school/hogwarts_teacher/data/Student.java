@@ -10,6 +10,7 @@ import lombok.Setter;
 @Getter
 public class Student {
     @NonNull private Long id;
+    @NonNull private StudentStatusType statusType;
     @NonNull private List<Long> groupIds;
     @NonNull private String name;
     @NonNull private List<String> phones;

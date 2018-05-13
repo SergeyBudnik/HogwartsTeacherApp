@@ -24,7 +24,7 @@ public class StudentsListAdapter extends BaseAdapter {
     Context context;
 
     @Setter private List<Student> items = new ArrayList<>();
-    @Setter private Consumer<Long> onStudentAttendanceClick = it -> {};
+    @Setter private Consumer<Student> onStudentAttendanceClick = it -> {};
 
     @Override
     public int getCount() {

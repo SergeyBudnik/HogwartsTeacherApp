@@ -73,8 +73,8 @@
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:paddingTop="15dp"
-                android:src="@drawable/no_student"
-                android:tint="@color/gray_light"
+                android:src="@drawable/student"
+                android:tint="@color/gray_medium"
                 android:contentDescription="@string/img_content"/>
 
         </LinearLayout>

@@ -14,13 +14,26 @@
         android:layout_marginStart="20dp"
         android:background="@color/gray_very_light"/>
 
-    <com.hogwarts_eng_school.hogwarts_teacher.view.LoadableImageView_
-        android:id="@+id/icon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:riv_corner_radius="20dp"
-        android:layout_marginTop="15dp"
-        android:src="@color/gray_very_light"/>
+    <RelativeLayout
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="13dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            app:riv_corner_radius="22dp"
+            android:src="@color/primary_normal"/>
+
+        <com.hogwarts_eng_school.hogwarts_teacher.view.LoadableImageView_
+            android:id="@+id/icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            app:riv_corner_radius="20dp"
+            android:src="@color/gray_very_light"/>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -30,20 +43,22 @@
         android:layout_marginLeft="60dp"
         android:layout_marginStart="60dp">
 
-        <TextView
+        <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:gravity="center_vertical"
+            app:app_font="bold"
             android:textColor="@color/gray_medium"
             android:textSize="18sp"/>
 
-        <TextView
+        <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
             android:id="@+id/cabinet"
             android:layout_width="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_height="20dp"
             android:gravity="center_vertical"
+            app:app_font="regular"
             android:textColor="@color/gray_medium"
             android:textSize="15sp"/>
 

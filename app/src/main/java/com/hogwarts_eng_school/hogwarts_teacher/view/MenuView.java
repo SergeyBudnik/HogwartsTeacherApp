@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.PorterDuff;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -28,14 +29,16 @@ import lombok.Getter;
 @EViewGroup(R.layout.view_menu)
 public class MenuView extends RelativeLayout {
     public enum Page {
-        NONE(0, 0),
-        MY_LESSONS(R.id.my_lessons_icon, R.id.my_lessons_label),
-        TODAY_LESSONS(R.id.today_lessons_icon, R.id.today_lessons_label);
+        NONE(0, 0, 0),
+        MY_LESSONS(R.id.my_lessons_mark, R.id.my_lessons_icon, R.id.my_lessons_label),
+        TODAY_LESSONS(R.id.today_lessons_mark, R.id.today_lessons_icon, R.id.today_lessons_label);
 
+        @Getter private int markId;
         @Getter private int iconViewId;
         @Getter private int labelViewId;
 
-        Page(int iconViewId, int labelViewId) {
+        Page(int markViewId, int iconViewId, int labelViewId) {
+            this.markId = markViewId;
             this.iconViewId = iconViewId;
             this.labelViewId = labelViewId;
         }
@@ -101,7 +104,13 @@ public class MenuView extends RelativeLayout {
 
     public void setCurrentPage(Page currentPage) {
         for (Page page : Page.values()) {
-            int color = getResources().getColor(page == currentPage ? R.color.primary_normal : R.color.black);
+            int color = getResources().getColor(page == currentPage ? R.color.white : R.color.white);
+
+            View markView = findViewById(page.getMarkId());
+
+            if (markView != null) {
+                markView.setVisibility(currentPage == page ? VISIBLE : INVISIBLE);
+            }
 
             ImageView iconView = findViewById(page.getIconViewId());
 
@@ -118,6 +127,10 @@ public class MenuView extends RelativeLayout {
     }
 
     private String getVersion() {
+        if (isInEditMode()) {
+            return "1.0.0";
+        }
+
         try {
             return getContext().getPackageManager().getPackageInfo(
                     getContext().getPackageName(),

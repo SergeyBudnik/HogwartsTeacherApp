@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="250dp"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/primary_normal_transparent"
     android:clickable="true"
     android:focusable="true">
 
@@ -13,38 +13,53 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
 
-        <com.hogwarts_eng_school.hogwarts_teacher.view.LoadableImageView_
-            android:id="@+id/icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            app:riv_corner_radius="20dp"
+        <RelativeLayout
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:layout_marginRight="20dp"
-            android:layout_marginEnd="20dp"
-            android:src="@color/gray_very_light"/>
+            android:layout_marginEnd="20dp">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                app:riv_corner_radius="22dp"
+                android:src="@color/white"/>
+
+            <com.hogwarts_eng_school.hogwarts_teacher.view.LoadableImageView_
+                android:id="@+id/icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                app:riv_corner_radius="20dp"
+                android:src="@color/gray_very_light"/>
+
+        </RelativeLayout>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:app_font="bold"
                 android:textSize="15sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/white"/>
 
-            <TextView
+            <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
                 android:id="@+id/login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:app_font="regular"
                 android:textSize="15sp"
-                android:textColor="@color/gray_dark"/>
+                android:textColor="@color/white"/>
 
         </LinearLayout>
 
@@ -54,29 +69,35 @@
         android:id="@+id/my_lessons"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/my_lessons_mark"
+            android:layout_width="3dp"
+            android:layout_height="50dp"
+            android:background="@color/white"/>
 
         <ImageView
             android:id="@+id/my_lessons_icon"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginEnd="20dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/my_lessons"
+            android:tint="@color/white"
             android:contentDescription="@string/img_content"/>
 
-        <TextView
+        <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
             android:id="@+id/my_lessons_label"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            app:app_font="bold"
             android:text="@string/menu_my_lessons"
-            android:textColor="@color/black"
-            android:textSize="16sp"/>
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
 
     </LinearLayout>
 
@@ -84,28 +105,35 @@
         android:id="@+id/today_lessons"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/today_lessons_mark"
+            android:layout_width="3dp"
+            android:layout_height="50dp"
+            android:background="@color/white"/>
 
         <ImageView
             android:id="@+id/today_lessons_icon"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_gravity="center_vertical"
             android:src="@drawable/today_lessons"
+            android:tint="@color/white"
             android:contentDescription="@string/img_content"/>
 
-        <TextView
+        <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
             android:id="@+id/today_lessons_label"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            app:app_font="bold"
             android:text="@string/menu_today_lessons"
-            android:textColor="@color/black"
-            android:textSize="16sp"/>
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
 
     </LinearLayout>
 
@@ -135,18 +163,22 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginEnd="20dp"
                     android:src="@drawable/sign_out"
+                    android:tint="@color/white"
                     android:contentDescription="@string/img_content"/>
 
-                <TextView
+                <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    app:app_font="bold"
                     android:text="@string/menu_exit"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"/>
+                    android:textColor="@color/white"
+                    android:textSize="15sp"/>
 
             </LinearLayout>
 
-            <TextView
+            <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
                 android:id="@+id/version"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -154,8 +186,9 @@
                 android:paddingBottom="15dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:textColor="@color/black"
-                android:textSize="16sp"/>
+                app:app_font="bold"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
 
         </LinearLayout>
 

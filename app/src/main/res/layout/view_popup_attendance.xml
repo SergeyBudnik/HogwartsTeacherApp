@@ -1,60 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_medium_transparent">
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
+    <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
+        android:id="@+id/student"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="30dp"
-        android:paddingBottom="30dp"
-        android:background="@drawable/layout_popup"
-        android:clickable="true"
-        android:focusable="true">
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        app:app_font="bold"
+        android:textSize="18sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/attended"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:text="Посетил"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:background="@color/success"
+        android:alpha="0.5"/>
+
+    <TextView
+        android:id="@+id/valid_skip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:text="Уважительный пропуск"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:background="@color/warning"
+        android:alpha="0.5"/>
+
+    <TextView
+        android:id="@+id/invalid_skip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:text="Неуважительный пропуск"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:background="@color/danger"
+        android:alpha="0.5"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/primary_normal">
 
         <TextView
-            android:id="@+id/attended"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:gravity="center"
-            android:text="Посетил"
-            android:textColor="@color/black"
-            android:background="@drawable/button_success"/>
+            android:text="Отметить"
+            android:textSize="15sp"
+            android:textColor="@color/white"/>
 
-        <TextView
-            android:id="@+id/valid_skip"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:gravity="center"
-            android:text="Уважительный пропуск"
-            android:textColor="@color/black"
-            android:background="@drawable/button_info"/>
+        <ImageView
+            android:id="@+id/submit_spinner"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/spinner"
+            android:tint="@color/white"
+            android:contentDescription="@string/img_content"
+            android:visibility="gone"/>
 
-        <TextView
-            android:id="@+id/invalid_skip"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:gravity="center"
-            android:text="Неуважительный пропуск"
-            android:textColor="@color/black"
-            android:background="@drawable/button_danger"/>
+    </RelativeLayout>
 
-    </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>

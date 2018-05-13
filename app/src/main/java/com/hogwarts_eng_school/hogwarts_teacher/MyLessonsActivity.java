@@ -1,5 +1,6 @@
 package com.hogwarts_eng_school.hogwarts_teacher;
 
+import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.widget.ListView;
@@ -24,6 +25,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.hogwarts_eng_school.hogwarts_teacher.LessonActivity.VIEW_LESSON_ACTION_ID;
+
 @EActivity(R.layout.activity_my_lessons)
 public class MyLessonsActivity extends BaseActivity {
     @ViewById(R.id.root)
@@ -45,6 +48,8 @@ public class MyLessonsActivity extends BaseActivity {
 
     @AfterViews
     void init() {
+        rootView.setScrimColor(getResources().getColor(R.color.transparent));
+
         menuView.setCurrentPage(MenuView.Page.MY_LESSONS);
 
         setLessons();
@@ -59,11 +64,20 @@ public class MyLessonsActivity extends BaseActivity {
     void onLessonClick(MyLessonsListAdapter.Item item) {
         Map<String, Serializable> extras = new HashMap<>();
         {
-            extras.put(GroupActivity.EXTRA_GROUP_ID, item.getGroup().getId());
-            extras.put(GroupActivity.EXTRA_LESSON_ID, item.getLesson().getId());
+            extras.put(LessonActivity.EXTRA_GROUP_ID, item.getGroup().getId());
+            extras.put(LessonActivity.EXTRA_LESSON_ID, item.getLesson().getId());
         }
 
-        redirect(GroupActivity_.class, 0, 0, false, extras);
+        redirectForResult(LessonActivity_.class, 0, 0, VIEW_LESSON_ACTION_ID, extras);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == VIEW_LESSON_ACTION_ID) {
+                setLessons();
+            }
+        }
     }
 
     private void setLessons() {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,10 +25,11 @@
             android:tint="@color/white"
             android:contentDescription="@string/img_content"/>
 
-        <TextView
+        <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            app:app_font="bold"
             android:text="@string/page_lesson"
             android:textColor="@color/white"
             android:textSize="15sp"/>
@@ -40,112 +41,102 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:orientation="vertical"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
+                    android:background="@color/gray_very_light"/>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginStart="25dp"
+                    android:background="@drawable/ic_timetable_item"/>
+
+                <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
+                    android:id="@+id/cabinet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    app:app_font="bold"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
+                    android:background="@color/gray_very_light"/>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginStart="25dp"
+                    android:background="@drawable/ic_timetable_item"/>
+
+                <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    app:app_font="bold"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_very_light"/>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginStart="30dp"
-                        android:background="@color/gray_very_light"/>
-
-                    <View
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginStart="25dp"
-                        android:background="@drawable/ic_timetable_item"/>
-
-                    <TextView
-                        android:id="@+id/cabinet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="50dp"
-                        android:layout_marginRight="50dp"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"/>
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginStart="30dp"
-                        android:background="@color/gray_very_light"/>
-
-                    <View
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginStart="25dp"
-                        android:background="@drawable/ic_timetable_item"/>
-
-                    <TextView
-                        android:id="@+id/time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginLeft="50dp"
-                        android:layout_marginRight="50dp"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"/>
-
-                </RelativeLayout>
-
                 <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
                     android:background="@color/gray_very_light"/>
 
-                <RelativeLayout
+                <ListView
+                    android:id="@+id/students"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:divider="@color/gray_very_light"
+                    android:dividerHeight="1dp"/>
 
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginStart="30dp"
-                        android:background="@color/gray_very_light"/>
+            </RelativeLayout>
 
-                    <ListView
-                        android:id="@+id/students"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:divider="@color/gray_very_light"
-                        android:dividerHeight="1dp"/>
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <com.hogwarts_eng_school.hogwarts_teacher.view.StudentAttendancePopupView_
-                android:id="@+id/attendance_popup"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="invisible"/>
-
-        </RelativeLayout>
+        </LinearLayout>
 
         <com.hogwarts_eng_school.hogwarts_teacher.view.MenuView_
             android:id="@+id/menu"

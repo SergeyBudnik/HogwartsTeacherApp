@@ -26,11 +26,12 @@
                 android:layout_marginRight="20dp"
                 android:background="@color/gray_very_light"/>
 
-            <TextView
+            <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
                 android:id="@+id/cabinet"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
+                app:app_font="regular"
                 android:textSize="16sp"
                 android:textColor="@color/primary_normal"/>
 
@@ -72,11 +73,12 @@
             android:layout_marginLeft="60dp"
             android:layout_marginStart="60dp">
 
-            <TextView
+            <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:gravity="center_vertical"
+                app:app_font="bold"
                 android:textColor="@color/gray_medium"
                 android:textSize="18sp"/>
 
