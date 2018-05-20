@@ -1,5 +1,8 @@
 package com.hogwarts_eng_school.hogwarts_teacher;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.view.animation.Animation;
 import android.widget.TextView;
@@ -36,6 +39,9 @@ public class AddStudentAttendanceActivity extends BaseActivity {
 
     public static final String EXTRA_STUDENT_ID = "studentId";
 
+    @ViewById(R.id.root)
+    DrawerLayout rootView;
+
     @ViewById(R.id.student)
     TextView studentView;
 
@@ -66,6 +72,8 @@ public class AddStudentAttendanceActivity extends BaseActivity {
 
     @AfterViews
     void init() {
+        rootView.setScrimColor(Color.TRANSPARENT);
+
         Student student = Stream.of(studentsService.getStudents())
                 .filter(it -> Objects.equals(it.getId(), studentId))
                 .findFirst()
@@ -104,6 +112,16 @@ public class AddStudentAttendanceActivity extends BaseActivity {
                 }
             });
         }
+    }
+
+    @Click(R.id.back)
+    void onBackClick() {
+        finishRedirectForResult(0, 0, RESULT_CANCELED);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        finishRedirectForResult(0, 0, RESULT_CANCELED);
     }
 
     @UiThread

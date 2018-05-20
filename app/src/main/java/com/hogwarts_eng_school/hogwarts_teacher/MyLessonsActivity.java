@@ -1,6 +1,7 @@
 package com.hogwarts_eng_school.hogwarts_teacher;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.widget.ListView;
@@ -48,7 +49,7 @@ public class MyLessonsActivity extends BaseActivity {
 
     @AfterViews
     void init() {
-        rootView.setScrimColor(getResources().getColor(R.color.transparent));
+        rootView.setScrimColor(Color.TRANSPARENT);
 
         menuView.setCurrentPage(MenuView.Page.MY_LESSONS);
 

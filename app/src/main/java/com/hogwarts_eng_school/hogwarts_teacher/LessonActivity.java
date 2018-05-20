@@ -1,6 +1,8 @@
 package com.hogwarts_eng_school.hogwarts_teacher;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.v4.widget.DrawerLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,6 +30,8 @@ public class LessonActivity extends BaseActivity {
     public static final String EXTRA_GROUP_ID = "groupId";
     public static final String EXTRA_LESSON_ID = "lessonId";
 
+    @ViewById(R.id.root)
+    DrawerLayout rootView;
     @ViewById(R.id.menu)
     MenuView menuView;
     @ViewById(R.id.cabinet)
@@ -52,6 +56,8 @@ public class LessonActivity extends BaseActivity {
 
     @AfterViews
     void init() {
+        rootView.setScrimColor(Color.TRANSPARENT);
+
         menuView.setCurrentPage(MenuView.Page.NONE);
 
         cabinetView.setText(lessonsService.getCabinet(lessonId).orElseThrow(RuntimeException::new).getName());
