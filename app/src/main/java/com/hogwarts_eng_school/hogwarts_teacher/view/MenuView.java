@@ -13,6 +13,7 @@ import com.hogwarts_eng_school.hogwarts_teacher.BaseActivity;
 import com.hogwarts_eng_school.hogwarts_teacher.LoginActivity_;
 import com.hogwarts_eng_school.hogwarts_teacher.MyLessonsActivity_;
 import com.hogwarts_eng_school.hogwarts_teacher.R;
+import com.hogwarts_eng_school.hogwarts_teacher.TeachersListActivity_;
 import com.hogwarts_eng_school.hogwarts_teacher.TodayLessonsActivity_;
 import com.hogwarts_eng_school.hogwarts_teacher.data.AppUserInfo;
 import com.hogwarts_eng_school.hogwarts_teacher.service.AuthService;
@@ -31,7 +32,8 @@ public class MenuView extends RelativeLayout {
     public enum Page {
         NONE(0, 0, 0),
         MY_LESSONS(R.id.my_lessons_mark, R.id.my_lessons_icon, R.id.my_lessons_label),
-        TODAY_LESSONS(R.id.today_lessons_mark, R.id.today_lessons_icon, R.id.today_lessons_label);
+        TODAY_LESSONS(R.id.today_lessons_mark, R.id.today_lessons_icon, R.id.today_lessons_label),
+        TEACHERS(R.id.teachers_mark, R.id.teachers_icon, R.id.teachers_label);
 
         @Getter private int markId;
         @Getter private int iconViewId;
@@ -93,6 +95,11 @@ public class MenuView extends RelativeLayout {
     @Click(R.id.today_lessons)
     void onTodayLessonsClick() {
         getActivity().redirect(TodayLessonsActivity_.class, 0, 0, true);
+    }
+
+    @Click(R.id.teachers)
+    void onTeachersClick() {
+        getActivity().redirect(TeachersListActivity_.class, 0, 0, true);
     }
 
     @Click(R.id.exit)

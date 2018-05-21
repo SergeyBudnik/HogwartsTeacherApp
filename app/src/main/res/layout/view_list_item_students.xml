@@ -5,22 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <View
-        android:layout_width="1dp"
-        android:layout_height="110dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:background="@color/gray_very_light"/>
-
-    <View
         android:layout_width="10dp"
         android:layout_height="10dp"
-        android:layout_marginTop="25dp"
+        android:layout_centerVertical="true"
         android:layout_marginLeft="25dp"
         android:layout_marginStart="25dp"
         android:background="@drawable/ic_timetable_item"/>
 
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -28,18 +20,19 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="50dp"
             android:layout_marginStart="50dp"
+            android:layout_centerVertical="true"
             app:app_font="regular"
             android:textColor="@color/black"
-            android:textSize="16sp"/>
+            android:textSize="14sp"/>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginLeft="35dp"
             android:layout_marginStart="35dp">
 
@@ -56,6 +49,7 @@
                 android:contentDescription="@string/img_content"/>
 
             <ImageView
+                android:id="@+id/payment"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:paddingBottom="15dp"
@@ -63,7 +57,7 @@
                 android:paddingRight="15dp"
                 android:paddingTop="15dp"
                 android:src="@drawable/student_payment"
-                android:tint="@color/gray_light"
+                android:tint="@color/gray_medium"
                 android:contentDescription="@string/img_content"/>
 
             <ImageView
@@ -80,6 +74,6 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

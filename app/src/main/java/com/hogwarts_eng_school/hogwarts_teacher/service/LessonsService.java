@@ -8,6 +8,7 @@ import com.hogwarts_eng_school.hogwarts_teacher.data.DayOfWeek;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Group;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Lesson;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
+import com.hogwarts_eng_school.hogwarts_teacher.data.Teacher;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
@@ -23,6 +24,8 @@ public class LessonsService {
     StudentsService studentsService;
     @Bean
     CabinetsService cabinetsService;
+    @Bean
+    TeachersService teachersService;
     @Bean
     AuthService authService;
 
@@ -91,6 +94,11 @@ public class LessonsService {
         return getGroup(lessonId)
                 .map(it -> cabinetsService.getCabinet(it.getCabinetId()))
                 .orElseThrow(RuntimeException::new);
+    }
+
+    public Optional<Teacher> getTeacher(long lessonId) {
+        return getLesson(lessonId)
+                .flatMap(it -> teachersService.getTeacher(it.getTeacherId()));
     }
 
     public Optional<List<Student>> getStudents(long lessonId) {

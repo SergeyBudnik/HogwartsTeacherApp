@@ -137,6 +137,42 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/teachers"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/teachers_mark"
+            android:layout_width="3dp"
+            android:layout_height="50dp"
+            android:background="@color/white"/>
+
+        <ImageView
+            android:id="@+id/teachers_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/teacher"
+            android:tint="@color/white"
+            android:contentDescription="@string/img_content"/>
+
+        <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
+            android:id="@+id/teachers_label"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            app:app_font="bold"
+            android:text="@string/menu_teachers"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

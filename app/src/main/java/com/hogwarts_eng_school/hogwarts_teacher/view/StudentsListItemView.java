@@ -42,6 +42,7 @@ public class StudentsListItemView extends RelativeLayout {
 
     private Student student;
     private Consumer<Student> onStudentAttendanceClick;
+    private Consumer<Student> onStudentPaymentClick;
 
     public StudentsListItemView(Context context) {
         super(context);
@@ -51,9 +52,14 @@ public class StudentsListItemView extends RelativeLayout {
         super(context, attrs);
     }
 
-    public void bind(Student student, Consumer<Student> onStudentAttendanceClick) {
+    public void bind(
+            Student student,
+            Consumer<Student> onStudentAttendanceClick,
+            Consumer<Student> onStudentPaymentClick
+    ) {
         this.student = student;
         this.onStudentAttendanceClick = onStudentAttendanceClick;
+        this.onStudentPaymentClick = onStudentPaymentClick;
 
         nameView.setText(student.getName());
 
@@ -113,5 +119,10 @@ public class StudentsListItemView extends RelativeLayout {
     @Click(R.id.attendance)
     void onAttendanceClick() {
         onStudentAttendanceClick.accept(student);
+    }
+
+    @Click(R.id.payment)
+    void onPaymentClick() {
+        onStudentPaymentClick.accept(student);
     }
 }

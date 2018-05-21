@@ -25,6 +25,7 @@ public class StudentsListAdapter extends BaseAdapter {
 
     @Setter private List<Student> items = new ArrayList<>();
     @Setter private Consumer<Student> onStudentAttendanceClick = it -> {};
+    @Setter private Consumer<Student> onStudentPaymentClick = it -> {};
 
     @Override
     public int getCount() {
@@ -47,7 +48,7 @@ public class StudentsListAdapter extends BaseAdapter {
                 StudentsListItemView_.build(context) :
                 (StudentsListItemView) convertView;
 
-        v.bind(getItem(position), onStudentAttendanceClick);
+        v.bind(getItem(position), onStudentAttendanceClick, onStudentPaymentClick);
 
         return v;
     }

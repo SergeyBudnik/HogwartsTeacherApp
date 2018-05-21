@@ -1,6 +1,5 @@
 package com.hogwarts_eng_school.hogwarts_teacher;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
@@ -41,6 +40,8 @@ public class AddStudentAttendanceActivity extends BaseActivity {
 
     @ViewById(R.id.root)
     DrawerLayout rootView;
+    @ViewById(R.id.content)
+    View contentView;
 
     @ViewById(R.id.student)
     TextView studentView;
@@ -72,7 +73,7 @@ public class AddStudentAttendanceActivity extends BaseActivity {
 
     @AfterViews
     void init() {
-        rootView.setScrimColor(Color.TRANSPARENT);
+        initMenu(rootView, contentView);
 
         Student student = Stream.of(studentsService.getStudents())
                 .filter(it -> Objects.equals(it.getId(), studentId))
@@ -114,19 +115,19 @@ public class AddStudentAttendanceActivity extends BaseActivity {
         }
     }
 
-    @Click(R.id.back)
-    void onBackClick() {
-        finishRedirectForResult(0, 0, RESULT_CANCELED);
+    @Override
+    public void onBackPressed() {
+        onClose(RESULT_CANCELED);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        finishRedirectForResult(0, 0, RESULT_CANCELED);
+    @Click(R.id.back)
+    void onBackClick() {
+        onClose(RESULT_CANCELED);
     }
 
     @UiThread
     void onAttendanceAdded() {
-        finishRedirectForResult(0, 0, RESULT_OK);
+        onClose(RESULT_OK);
     }
 
     private void toggleType(StudentAttendance.Type type) {
@@ -137,5 +138,13 @@ public class AddStudentAttendanceActivity extends BaseActivity {
         attendedView.setAlpha(this.type == VISITED ? ENABLED_ALPHA : DISABLED_ALPHA);
         validSkipView.setAlpha(this.type == VALID_SKIP ? ENABLED_ALPHA : DISABLED_ALPHA);
         invalidSkipView.setAlpha(this.type == INVALID_SKIP ? ENABLED_ALPHA : DISABLED_ALPHA);
+    }
+
+    private void onClose(int result) {
+        finishRedirectForResult(
+                R.anim.enter_close_anim,
+                R.anim.exit_close_anim,
+                result
+        );
     }
 }

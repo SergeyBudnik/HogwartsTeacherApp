@@ -3,7 +3,9 @@ package com.hogwarts_eng_school.hogwarts_teacher;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.ListView;
 
 import com.hogwarts_eng_school.hogwarts_teacher.adapter.MyLessonsListAdapter;
@@ -32,6 +34,8 @@ import static com.hogwarts_eng_school.hogwarts_teacher.LessonActivity.VIEW_LESSO
 public class MyLessonsActivity extends BaseActivity {
     @ViewById(R.id.root)
     DrawerLayout rootView;
+    @ViewById(R.id.content)
+    View contentView;
     @ViewById(R.id.menu)
     MenuView menuView;
     @ViewById(R.id.lessons)
@@ -49,7 +53,7 @@ public class MyLessonsActivity extends BaseActivity {
 
     @AfterViews
     void init() {
-        rootView.setScrimColor(Color.TRANSPARENT);
+        initMenu(rootView, contentView);
 
         menuView.setCurrentPage(MenuView.Page.MY_LESSONS);
 
@@ -69,7 +73,13 @@ public class MyLessonsActivity extends BaseActivity {
             extras.put(LessonActivity.EXTRA_LESSON_ID, item.getLesson().getId());
         }
 
-        redirectForResult(LessonActivity_.class, 0, 0, VIEW_LESSON_ACTION_ID, extras);
+        redirectForResult(
+                LessonActivity_.class,
+                R.anim.enter_open_anim,
+                R.anim.exit_open_anim,
+                VIEW_LESSON_ACTION_ID,
+                extras
+        );
     }
 
     @Override

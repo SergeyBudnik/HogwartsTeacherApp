@@ -17,8 +17,9 @@
     <string name="loading_failed_title">Возникла ошибка</string>
     <string name="loading_failed_desc">Нажмите для повторной загрузки</string>
 
-    <string name="menu_today_lessons">Сегодняшние занятия</string>
     <string name="menu_my_lessons">Мои занятия</string>
+    <string name="menu_today_lessons">Сегодняшние занятия</string>
+    <string name="menu_teachers">Учителя</string>
     <string name="menu_exit">Выйти</string>
     <string name="menu_version">Версия %1$s</string>
 

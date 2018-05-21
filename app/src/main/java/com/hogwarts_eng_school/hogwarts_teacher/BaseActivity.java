@@ -1,9 +1,13 @@
 package com.hogwarts_eng_school.hogwarts_teacher;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.View;
 
 import org.androidannotations.annotations.EActivity;
 
@@ -18,6 +22,17 @@ public abstract class BaseActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
 
         // Fabric.with(this, new Crashlytics());
+    }
+
+    public void initMenu(DrawerLayout rootView, View contentView) {
+        rootView.setScrimColor(Color.TRANSPARENT);
+        rootView.addDrawerListener(new ActionBarDrawerToggle(this, rootView, 0, 0) {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                super.onDrawerSlide(drawerView, slideOffset);
+                contentView.setTranslationX(drawerView.getWidth() * slideOffset);
+            }
+        });
     }
 
     public void redirect(Class<? extends BaseActivity> redirectTo, int enterAnim, int exitAnim, boolean doFinish) {
