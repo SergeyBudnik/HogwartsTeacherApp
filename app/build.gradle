@@ -29,8 +29,8 @@ android {
         applicationId "com.hogwarts_eng_school.hogwarts_teacher"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 8
-        versionName "1.7.0"
+        versionCode 9
+        versionName "1.8.0"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

@@ -11,7 +11,7 @@ import org.androidannotations.rest.spring.api.RestClientHeaders;
 
 import java.util.List;
 
-@Rest(rootUrl = "http://34.216.34.197:8080/HogwartsAPI", converters = JsonMapper.class)
+@Rest(rootUrl = RestConfiguration.ROOT, converters = JsonMapper.class)
 public interface TeacherRest extends RestClientHeaders {
     @Get("/teachers")
     @RequiresHeader(Headers.AUTHORIZATION)

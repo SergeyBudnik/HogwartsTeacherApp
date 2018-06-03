@@ -11,7 +11,7 @@ import org.androidannotations.rest.spring.annotations.Path;
 import org.androidannotations.rest.spring.annotations.Post;
 import org.androidannotations.rest.spring.annotations.Rest;
 
-@Rest(rootUrl = "http://34.216.34.197:8080/MunicipaliSecurityServer/user", converters = JsonMapper.class)
+@Rest(rootUrl = "http://194.58.42.198:8080/MunicipaliSecurityServer/user", converters = JsonMapper.class)
 public interface LoginRest {
     @Post("")
     AuthInfo login(
