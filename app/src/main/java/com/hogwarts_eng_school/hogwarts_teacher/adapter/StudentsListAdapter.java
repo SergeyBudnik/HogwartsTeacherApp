@@ -7,8 +7,8 @@ import android.widget.BaseAdapter;
 
 import com.annimon.stream.function.Consumer;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
-import com.hogwarts_eng_school.hogwarts_teacher.view.StudentsListItemView;
-import com.hogwarts_eng_school.hogwarts_teacher.view.StudentsListItemView_;
+import com.hogwarts_eng_school.hogwarts_teacher.view.list.StudentsListItemView;
+import com.hogwarts_eng_school.hogwarts_teacher.view.list.StudentsListItemView_;
 
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;

@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.hogwarts_eng_school.hogwarts_teacher.R;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Teacher;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TeachersService;
-import com.hogwarts_eng_school.hogwarts_teacher.view.LoadableImageView;
+import com.hogwarts_eng_school.hogwarts_teacher.view.common.LoadableImageView;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EViewGroup;

@@ -8,7 +8,7 @@ import android.widget.ListView;
 import com.hogwarts_eng_school.hogwarts_teacher.adapter.TeachersListAdapter;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Teacher;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TeachersService;
-import com.hogwarts_eng_school.hogwarts_teacher.view.MenuView;
+import com.hogwarts_eng_school.hogwarts_teacher.view.app.MenuView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;

@@ -11,8 +11,8 @@ import com.hogwarts_eng_school.hogwarts_teacher.data.Cabinet;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Group;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Lesson;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
-import com.hogwarts_eng_school.hogwarts_teacher.view.TodayLessonsListItemView;
-import com.hogwarts_eng_school.hogwarts_teacher.view.TodayLessonsListItemView_;
+import com.hogwarts_eng_school.hogwarts_teacher.view.list.TodayLessonsListItemView;
+import com.hogwarts_eng_school.hogwarts_teacher.view.list.TodayLessonsListItemView_;
 
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;

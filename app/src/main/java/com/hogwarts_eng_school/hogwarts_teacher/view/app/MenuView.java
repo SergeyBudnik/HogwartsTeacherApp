@@ -1,4 +1,4 @@
-package com.hogwarts_eng_school.hogwarts_teacher.view;
+package com.hogwarts_eng_school.hogwarts_teacher.view.app;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -18,6 +18,7 @@ import com.hogwarts_eng_school.hogwarts_teacher.TodayLessonsActivity_;
 import com.hogwarts_eng_school.hogwarts_teacher.data.AppUserInfo;
 import com.hogwarts_eng_school.hogwarts_teacher.service.AuthService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TeachersService;
+import com.hogwarts_eng_school.hogwarts_teacher.view.common.LoadableImageView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;

@@ -1,10 +1,10 @@
-package com.hogwarts_eng_school.hogwarts_teacher.view;
+package com.hogwarts_eng_school.hogwarts_teacher.view.list;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.net.Uri;
-import android.support.v4.app.ActivityCompat;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -12,21 +12,18 @@ import android.widget.TextView;
 
 import com.annimon.stream.Optional;
 import com.annimon.stream.function.Consumer;
-import com.hogwarts_eng_school.hogwarts_teacher.BaseActivity;
 import com.hogwarts_eng_school.hogwarts_teacher.R;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
 import com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendance;
 import com.hogwarts_eng_school.hogwarts_teacher.service.StudentAttendanceService;
+import com.hogwarts_eng_school.hogwarts_teacher.utils.PermissionsUtils;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
-import static android.Manifest.permission.CALL_PHONE;
 import static android.content.Intent.ACTION_CALL;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static android.support.v4.content.ContextCompat.checkSelfPermission;
 
 @EViewGroup(R.layout.view_list_item_students)
 public class StudentsListItemView extends RelativeLayout {
@@ -97,22 +94,18 @@ public class StudentsListItemView extends RelativeLayout {
         attendanceView.getDrawable().setColorFilter(color, PorterDuff.Mode.SRC_IN);
     }
 
+    @SuppressLint("MissingPermission")
     @Click(R.id.call)
     void onCallClick() {
         if (!student.getPhones().isEmpty()) {
-            boolean hasPermission = checkSelfPermission(getContext(), CALL_PHONE) == PERMISSION_GRANTED;
+            PermissionsUtils.doPermittedAction(
+                    getContext(),
+                    () -> {
+                        Intent intent = new Intent(ACTION_CALL, Uri.parse("tel:" + student.getPhones().get(0)));
 
-            if (hasPermission) {
-                Intent intent = new Intent(ACTION_CALL, Uri.parse("tel:" + student.getPhones().get(0)));
-
-                getContext().startActivity(intent);
-            } else {
-                ActivityCompat.requestPermissions(
-                        (BaseActivity) getContext(),
-                        new String [] {CALL_PHONE},
-                        1
-                );
-            }
+                        getContext().startActivity(intent);
+                    }
+            );
         }
     }
 

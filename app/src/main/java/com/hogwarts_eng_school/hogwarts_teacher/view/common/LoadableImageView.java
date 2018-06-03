@@ -1,4 +1,4 @@
-package com.hogwarts_eng_school.hogwarts_teacher.view;
+package com.hogwarts_eng_school.hogwarts_teacher.view.common;
 
 import android.content.Context;
 import android.graphics.Bitmap;

@@ -1,6 +1,5 @@
 package com.hogwarts_eng_school.hogwarts_teacher;
 
-import android.graphics.Color;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.view.animation.Animation;

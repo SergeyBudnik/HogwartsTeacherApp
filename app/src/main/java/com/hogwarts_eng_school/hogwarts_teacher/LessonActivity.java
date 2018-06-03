@@ -1,7 +1,6 @@
 package com.hogwarts_eng_school.hogwarts_teacher;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.ListView;
@@ -14,8 +13,8 @@ import com.hogwarts_eng_school.hogwarts_teacher.data.Teacher;
 import com.hogwarts_eng_school.hogwarts_teacher.service.LessonsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.StudentsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TeachersService;
-import com.hogwarts_eng_school.hogwarts_teacher.view.LoadableImageView;
-import com.hogwarts_eng_school.hogwarts_teacher.view.MenuView;
+import com.hogwarts_eng_school.hogwarts_teacher.view.common.LoadableImageView;
+import com.hogwarts_eng_school.hogwarts_teacher.view.app.MenuView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;

@@ -1,7 +1,6 @@
 package com.hogwarts_eng_school.hogwarts_teacher;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.View;
@@ -12,7 +11,7 @@ import com.hogwarts_eng_school.hogwarts_teacher.data.Lesson;
 import com.hogwarts_eng_school.hogwarts_teacher.service.CabinetsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.LessonsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TimeService;
-import com.hogwarts_eng_school.hogwarts_teacher.view.MenuView;
+import com.hogwarts_eng_school.hogwarts_teacher.view.app.MenuView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;

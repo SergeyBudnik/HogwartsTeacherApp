@@ -96,7 +96,7 @@
 
         </RelativeLayout>
 
-        <com.hogwarts_eng_school.hogwarts_teacher.view.MenuView_
+        <com.hogwarts_eng_school.hogwarts_teacher.view.app.MenuView_
             android:id="@+id/menu"
             android:layout_width="250dp"
             android:layout_height="match_parent"

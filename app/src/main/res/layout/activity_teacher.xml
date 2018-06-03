@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             app:app_font="bold"
-            android:text="@string/page_lesson"
+            android:text="@string/page_teacher"
             android:textColor="@color/white"
             android:textSize="15sp"/>
 
@@ -78,7 +78,7 @@
                             app:riv_corner_radius="22dp"
                             android:src="@color/primary_normal"/>
 
-                        <com.hogwarts_eng_school.hogwarts_teacher.view.LoadableImageView_
+                        <com.hogwarts_eng_school.hogwarts_teacher.view.common.LoadableImageView_
                             android:id="@+id/teacher_icon"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
@@ -158,7 +158,7 @@
 
         </RelativeLayout>
 
-        <com.hogwarts_eng_school.hogwarts_teacher.view.MenuView_
+        <com.hogwarts_eng_school.hogwarts_teacher.view.app.MenuView_
             android:id="@+id/menu"
             android:layout_width="250dp"
             android:layout_height="match_parent"

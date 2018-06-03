@@ -1,9 +1,8 @@
-package com.hogwarts_eng_school.hogwarts_teacher.view;
+package com.hogwarts_eng_school.hogwarts_teacher.view.list;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,10 +13,10 @@ import com.hogwarts_eng_school.hogwarts_teacher.data.Cabinet;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Lesson;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
 import com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendance;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Teacher;
 import com.hogwarts_eng_school.hogwarts_teacher.service.AuthService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.StudentAttendanceService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TeachersService;
+import com.hogwarts_eng_school.hogwarts_teacher.view.common.LoadableImageView;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EViewGroup;
@@ -25,12 +24,22 @@ import org.androidannotations.annotations.ViewById;
 
 import java.util.List;
 
-@EViewGroup(R.layout.view_list_item_today_lessons)
-public class TodayLessonsListItemView extends RelativeLayout {
+@EViewGroup(R.layout.view_list_item_my_lessons)
+public class MyLessonsListItemView extends RelativeLayout {
+    public MyLessonsListItemView(Context context) {
+        super(context);
+    }
+
+    public MyLessonsListItemView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
     @ViewById(R.id.icon)
     LoadableImageView iconView;
     @ViewById(R.id.time)
     TextView timeView;
+    @ViewById(R.id.cabinet)
+    TextView cabinetView;
 
     @ViewById(R.id.student_1)
     ImageView studentView1;
@@ -45,11 +54,6 @@ public class TodayLessonsListItemView extends RelativeLayout {
     @ViewById(R.id.student_6)
     ImageView studentView6;
 
-    @ViewById(R.id.cabinet_label)
-    View cabinetLabelView;
-    @ViewById(R.id.cabinet)
-    TextView cabinetView;
-
     @Bean
     AuthService authService;
     @Bean
@@ -57,26 +61,17 @@ public class TodayLessonsListItemView extends RelativeLayout {
     @Bean
     StudentAttendanceService studentAttendanceService;
 
-    public TodayLessonsListItemView(Context context) {
-        super(context);
-    }
-
-    public TodayLessonsListItemView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    public void bind(Cabinet cabinet, Lesson lesson, List<Student> students, boolean newCabinet) {
-        cabinetLabelView.setVisibility(newCabinet ? VISIBLE : GONE);
-        cabinetView.setText(cabinet.getName());
-
-        Teacher teacher = teachersService.getTeacher(lesson.getTeacherId()).orElseThrow(RuntimeException::new);
+    public void bind(Cabinet cabinet, Lesson lesson, List<Student> students) {
+        String login = authService.getUserInfo().orElseThrow(RuntimeException::new).getLogin();
 
         iconView.configure(
                 lesson.getTeacherId() + "_" + lesson.getStartTime() + "_" + lesson.getFinishTime(),
                 R.color.gray_very_light,
-                () -> teachersService.getImage(teacher.getLogin()).orElseThrow(RuntimeException::new),
+                () -> teachersService.getImage(login).orElseThrow(RuntimeException::new),
                 () -> null
         );
+
+        cabinetView.setText(cabinet.getName());
 
         timeView.setText(getResources().getString(
                 R.string.lesson_time,

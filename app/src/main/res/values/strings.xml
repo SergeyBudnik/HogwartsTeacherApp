@@ -26,6 +26,7 @@
     <string name="page_today_lessons">Сегодняшние занятия</string>
     <string name="page_my_lessons">Мои занятия</string>
     <string name="page_lesson">Занятие</string>
+    <string name="page_teacher">Учитель</string>
 
     <string name="lesson_time">%1$s - %2$s</string>
 

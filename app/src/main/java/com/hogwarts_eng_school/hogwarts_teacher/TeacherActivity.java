@@ -1,17 +1,17 @@
 package com.hogwarts_eng_school.hogwarts_teacher;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.TextView;
 
 import com.hogwarts_eng_school.hogwarts_teacher.data.Teacher;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TeachersService;
-import com.hogwarts_eng_school.hogwarts_teacher.view.LoadableImageView;
-import com.hogwarts_eng_school.hogwarts_teacher.view.MenuView;
+import com.hogwarts_eng_school.hogwarts_teacher.utils.PermissionsUtils;
+import com.hogwarts_eng_school.hogwarts_teacher.view.common.LoadableImageView;
+import com.hogwarts_eng_school.hogwarts_teacher.view.app.MenuView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -20,9 +20,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
-import static android.Manifest.permission.CALL_PHONE;
 import static android.content.Intent.ACTION_CALL;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 @EActivity(R.layout.activity_teacher)
 public class TeacherActivity extends BaseActivity {
@@ -73,18 +71,15 @@ public class TeacherActivity extends BaseActivity {
         onClose();
     }
 
+    @SuppressLint("MissingPermission")
     @Click(R.id.make_call)
     void onMakeCallClick() {
         if (!teacher.getPhones().isEmpty()) {
-            boolean hasPermission = ContextCompat.checkSelfPermission(this, CALL_PHONE) == PERMISSION_GRANTED;
-
-            if (hasPermission) {
+            PermissionsUtils.doPermittedAction(this, () -> {
                 Intent intent = new Intent(ACTION_CALL, Uri.parse("tel:" + teacher.getPhones().get(0)));
 
                 startActivity(intent);
-            } else {
-                ActivityCompat.requestPermissions(this, new String [] {CALL_PHONE}, 1);
-            }
+            });
         }
     }
 
