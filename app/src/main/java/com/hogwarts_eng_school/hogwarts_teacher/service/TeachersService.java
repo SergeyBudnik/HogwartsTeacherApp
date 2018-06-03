@@ -28,6 +28,10 @@ public class TeachersService {
     private byte [] ekaterinaUdodovaIcon = null;
     private byte [] nadezhdaKropinaIcon = null;
 
+    public List<Teacher> getTeachers() {
+        return teachers;
+    }
+
     public Optional<Teacher> getTeacher(long id) {
         return Stream.of(teachers)
                 .filter(it -> Objects.equals(it.getId(), id))

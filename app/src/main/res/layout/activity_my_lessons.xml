@@ -46,21 +46,53 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="40dp"
-                android:layout_marginStart="40dp"
-                android:background="@color/gray_very_light"/>
-
-            <ListView
-                android:id="@+id/lessons"
+            <RelativeLayout
+                android:id="@+id/lessons_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:dividerHeight="1dp"
-                android:divider="@color/gray_very_light"
-                android:background="@android:color/transparent"/>
+                android:layout_height="match_parent">
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
+                    android:background="@color/gray_very_light"/>
+
+                <ListView
+                    android:id="@+id/lessons"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:dividerHeight="1dp"
+                    android:divider="@color/gray_very_light"
+                    android:background="@android:color/transparent"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/no_lessons"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/teacher"
+                    android:tint="@color/gray_medium"
+                    android:contentDescription="@string/img_content"/>
+
+                <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/no_lessons"
+                    app:app_font="bold"
+                    android:textSize="18sp"/>
+
+            </LinearLayout>
 
         </RelativeLayout>
 

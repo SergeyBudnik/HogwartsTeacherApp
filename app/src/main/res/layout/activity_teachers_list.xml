@@ -46,13 +46,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:background="@color/gray_very_light"/>
+
+            <ListView
+                android:id="@+id/teachers"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="В процессе разработки"
-                android:textColor="@color/gray_medium"
-                android:textSize="20sp"/>
+                android:clipToPadding="false"
+                android:dividerHeight="1dp"
+                android:divider="@color/gray_very_light"
+                android:background="@android:color/transparent"/>
 
         </RelativeLayout>
 

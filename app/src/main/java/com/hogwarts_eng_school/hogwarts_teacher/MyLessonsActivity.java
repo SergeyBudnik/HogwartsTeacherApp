@@ -1,9 +1,7 @@
 package com.hogwarts_eng_school.hogwarts_teacher;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ListView;
@@ -28,6 +26,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 import static com.hogwarts_eng_school.hogwarts_teacher.LessonActivity.VIEW_LESSON_ACTION_ID;
 
 @EActivity(R.layout.activity_my_lessons)
@@ -38,8 +38,12 @@ public class MyLessonsActivity extends BaseActivity {
     View contentView;
     @ViewById(R.id.menu)
     MenuView menuView;
+    @ViewById(R.id.lessons_layout)
+    View lessonsLayoutView;
     @ViewById(R.id.lessons)
-    ListView lessons;
+    ListView lessonsView;
+    @ViewById(R.id.no_lessons)
+    View noLessonsView;
 
     @Bean
     LessonsService lessonsService;
@@ -92,21 +96,28 @@ public class MyLessonsActivity extends BaseActivity {
     }
 
     private void setLessons() {
-        List<MyLessonsListAdapter.Item> items = new ArrayList<>();
+        List<Lesson> lessons = lessonsService.getMyLessons();
 
-        for (Lesson lesson : lessonsService.getMyLessons()) {
-            items.add(MyLessonsListAdapter.Item
-                    .builder()
-                    .group(lessonsService.getGroup(lesson.getId()).orElseThrow(RuntimeException::new))
-                    .cabinet(lessonsService.getCabinet(lesson.getId()).orElseThrow(RuntimeException::new))
-                    .lesson(lesson)
-                    .students(lessonsService.getStudents(lesson.getId()).orElseThrow(RuntimeException::new))
-                    .build()
-            );
+        lessonsLayoutView.setVisibility(lessons.isEmpty() ? GONE : VISIBLE);
+        noLessonsView.setVisibility(lessons.isEmpty() ? VISIBLE : GONE);
+
+        if (!lessons.isEmpty()) {
+            List<MyLessonsListAdapter.Item> items = new ArrayList<>();
+
+            for (Lesson lesson : lessonsService.getMyLessons()) {
+                items.add(MyLessonsListAdapter.Item
+                        .builder()
+                        .group(lessonsService.getGroup(lesson.getId()).orElseThrow(RuntimeException::new))
+                        .cabinet(lessonsService.getCabinet(lesson.getId()).orElseThrow(RuntimeException::new))
+                        .lesson(lesson)
+                        .students(lessonsService.getStudents(lesson.getId()).orElseThrow(RuntimeException::new))
+                        .build()
+                );
+            }
+
+            myLessonsListAdapter.setItems(items);
+
+            lessonsView.setAdapter(myLessonsListAdapter);
         }
-
-        myLessonsListAdapter.setItems(items);
-
-        lessons.setAdapter(myLessonsListAdapter);
     }
 }

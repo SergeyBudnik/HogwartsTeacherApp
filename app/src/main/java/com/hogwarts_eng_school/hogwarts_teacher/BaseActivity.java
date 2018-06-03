@@ -80,6 +80,11 @@ public abstract class BaseActivity extends FragmentActivity {
         overridePendingTransition(enterAnim, exitAnim);
     }
 
+    public void finishRedirect(int enterAnim, int exitAnim) {
+        finish();
+        overridePendingTransition(enterAnim, exitAnim);
+    }
+
     public void finishRedirectForResult(int enterAnim, int exitAnim, int result) {
         finishRedirectForResult(enterAnim, exitAnim, result, Collections.emptyMap());
     }
