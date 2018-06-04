@@ -1,21 +1,23 @@
 package com.hogwarts_eng_school.hogwarts_teacher.service;
 
+import com.hogwarts_eng_school.hogwarts_teacher.dao.GroupsDao;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Group;
 
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@EBean(scope = EBean.Scope.Singleton)
+@EBean
 public class GroupsService {
-    private List<Group> groups = new ArrayList<>();
+    @Bean
+    GroupsDao groupsDao;
 
     public List<Group> getGroups() {
-        return groups;
+        return groupsDao.getGroups();
     }
 
     public void setGroups(List<Group> groups) {
-        this.groups = groups;
+        groupsDao.setGroups(groups);
     }
 }

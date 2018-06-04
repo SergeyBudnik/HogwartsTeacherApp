@@ -1,7 +1,6 @@
 package com.hogwarts_eng_school.hogwarts_teacher.rest.wrapper;
 
 import com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendance;
-import com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendanceInsertion;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.listener.RestListener;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.StudentAttendanceRest;
 import com.hogwarts_eng_school.hogwarts_teacher.service.AuthService;
@@ -36,20 +35,15 @@ public class StudentAttendanceRestWrapper extends AbstractAuthWrapper {
 
             long time = new Date().getTime();
 
-            long attendanceId = studentAttendanceRest.addAttendance(
-                    studentId,
-                    StudentAttendanceInsertion.builder().type(type).time(time).build()
-            );
+            StudentAttendance studentAttendance = StudentAttendance.builder()
+                    .studentId(studentId)
+                    .time(time)
+                    .type(type)
+                    .build();
 
-            StudentAttendance studentAttendance = new StudentAttendance();
-            {
-                studentAttendance.setId(attendanceId);
-                studentAttendance.setStudentId(studentId);
-                studentAttendance.setTime(time);
-                studentAttendance.setType(type);
-            }
+            long attendanceId = studentAttendanceRest.addAttendance(studentAttendance);
 
-            studentAttendanceService.addAttendance(studentAttendance);
+            studentAttendanceService.addAttendance(studentAttendance.withId(attendanceId));
 
             listener.onSuccess(null);
         } catch (Exception e) {

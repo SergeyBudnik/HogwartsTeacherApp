@@ -1,7 +1,6 @@
 package com.hogwarts_eng_school.hogwarts_teacher.rest.wrapper;
 
 import com.hogwarts_eng_school.hogwarts_teacher.data.StudentPayment;
-import com.hogwarts_eng_school.hogwarts_teacher.data.StudentPaymentInsertion;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.listener.RestListener;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.StudentPaymentRest;
 import com.hogwarts_eng_school.hogwarts_teacher.service.AuthService;
@@ -36,20 +35,15 @@ public class StudentPaymentRestWrapper extends AbstractAuthWrapper {
 
             long time = new Date().getTime();
 
-            long paymentId = studentPaymentRest.addPayment(
-                    studentId,
-                    StudentPaymentInsertion.builder().amount(amount).time(time).build()
-            );
+            StudentPayment studentPayment = StudentPayment.builder()
+                    .studentId(studentId)
+                    .time(time)
+                    .amount(amount)
+                    .build();
 
-            StudentPayment studentPayment = new StudentPayment();
-            {
-                studentPayment.setId(paymentId);
-                studentPayment.setStudentId(studentId);
-                studentPayment.setTime(time);
-                studentPayment.setAmount(amount);
-            }
+            long paymentId = studentPaymentRest.addPayment(studentPayment);
 
-            studentPaymentService.addPayment(studentPayment);
+            studentPaymentService.addPayment(studentPayment.withId(paymentId));
 
             listener.onSuccess(null);
         } catch (Exception e) {

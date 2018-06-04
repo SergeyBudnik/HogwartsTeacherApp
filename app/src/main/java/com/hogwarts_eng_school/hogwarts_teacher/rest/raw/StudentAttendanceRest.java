@@ -1,12 +1,10 @@
 package com.hogwarts_eng_school.hogwarts_teacher.rest.raw;
 
 import com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendance;
-import com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendanceInsertion;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.mapper.JsonMapper;
 
 import org.androidannotations.rest.spring.annotations.Body;
 import org.androidannotations.rest.spring.annotations.Get;
-import org.androidannotations.rest.spring.annotations.Path;
 import org.androidannotations.rest.spring.annotations.Post;
 import org.androidannotations.rest.spring.annotations.RequiresHeader;
 import org.androidannotations.rest.spring.annotations.Rest;
@@ -20,10 +18,7 @@ public interface StudentAttendanceRest extends RestClientHeaders {
     @RequiresHeader(Headers.AUTHORIZATION)
     List<StudentAttendance> getAllAttendances();
 
-    @Post("/student-attendance/{studentId}")
+    @Post("/student-attendance")
     @RequiresHeader(Headers.AUTHORIZATION)
-    Long addAttendance(
-            @Path long studentId,
-            @Body StudentAttendanceInsertion studentAttendanceInsertion
-    );
+    Long addAttendance(@Body StudentAttendance studentAttendance);
 }

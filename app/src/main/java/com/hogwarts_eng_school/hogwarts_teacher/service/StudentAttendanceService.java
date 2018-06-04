@@ -3,18 +3,19 @@ package com.hogwarts_eng_school.hogwarts_teacher.service;
 import com.annimon.stream.Objects;
 import com.annimon.stream.Optional;
 import com.annimon.stream.Stream;
+import com.hogwarts_eng_school.hogwarts_teacher.dao.StudentAttendanceDao;
 import com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendance;
 
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Comparator;
 import java.util.List;
 
-@EBean(scope = EBean.Scope.Singleton)
+@EBean
 public class StudentAttendanceService {
-    private List<StudentAttendance> attendances = new ArrayList<>();
+    @Bean
+    StudentAttendanceDao studentAttendanceDao;
 
     public Optional<StudentAttendance> getAttendance(long studentId) {
         Calendar cal = Calendar.getInstance();
@@ -27,17 +28,17 @@ public class StudentAttendanceService {
 
         long todayTime = cal.getTimeInMillis();
 
-        return Stream.of(attendances)
+        return Stream.of(studentAttendanceDao.getStudentAttendances())
                 .filter(it -> Objects.equals(studentId, it.getStudentId()))
                 .filter(it -> it.getTime() >= todayTime)
                 .max((a1, a2) -> Objects.compareLong(a1.getTime(), a2.getTime()));
     }
 
     public void setAttendances(List<StudentAttendance> attendances) {
-        this.attendances = attendances;
+        studentAttendanceDao.setStudentAttendances(attendances);
     }
 
     public void addAttendance(StudentAttendance attendance) {
-        attendances.add(attendance);
+        studentAttendanceDao.addStudentAttendance(attendance);
     }
 }

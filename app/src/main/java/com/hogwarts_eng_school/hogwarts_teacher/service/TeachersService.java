@@ -8,38 +8,40 @@ import com.annimon.stream.Objects;
 import com.annimon.stream.Optional;
 import com.annimon.stream.Stream;
 import com.hogwarts_eng_school.hogwarts_teacher.R;
+import com.hogwarts_eng_school.hogwarts_teacher.dao.TeachersDao;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Teacher;
 import com.hogwarts_eng_school.hogwarts_teacher.utils.BitmapUtils;
 
-import org.androidannotations.annotations.AfterInject;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
 import java.util.List;
 
-@EBean(scope = EBean.Scope.Singleton)
+@EBean
 public class TeachersService {
     @RootContext
     Context context;
 
-    private List<Teacher> teachers;
+    @Bean
+    TeachersDao teachersDao;
 
     private byte [] ekaterinaKryukovaIcon = null;
     private byte [] ekaterinaUdodovaIcon = null;
     private byte [] nadezhdaKropinaIcon = null;
 
     public List<Teacher> getTeachers() {
-        return teachers;
+        return teachersDao.getTeachers();
     }
 
     public Optional<Teacher> getTeacher(long id) {
-        return Stream.of(teachers)
+        return Stream.of(teachersDao.getTeachers())
                 .filter(it -> Objects.equals(it.getId(), id))
                 .findFirst();
     }
 
     public void setTeachers(List<Teacher> teachers) {
-        this.teachers = teachers;
+        teachersDao.setTeachers(teachers);
     }
 
     public Optional<byte []> getImage(String login) {

@@ -1,12 +1,10 @@
 package com.hogwarts_eng_school.hogwarts_teacher.rest.raw;
 
 import com.hogwarts_eng_school.hogwarts_teacher.data.StudentPayment;
-import com.hogwarts_eng_school.hogwarts_teacher.data.StudentPaymentInsertion;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.mapper.JsonMapper;
 
 import org.androidannotations.rest.spring.annotations.Body;
 import org.androidannotations.rest.spring.annotations.Get;
-import org.androidannotations.rest.spring.annotations.Path;
 import org.androidannotations.rest.spring.annotations.Post;
 import org.androidannotations.rest.spring.annotations.RequiresHeader;
 import org.androidannotations.rest.spring.annotations.Rest;
@@ -20,10 +18,7 @@ public interface StudentPaymentRest extends RestClientHeaders {
     @RequiresHeader(Headers.AUTHORIZATION)
     List<StudentPayment> getAllPayments();
 
-    @Post("/student-payment/{studentId}")
+    @Post("/student-payment")
     @RequiresHeader(Headers.AUTHORIZATION)
-    Long addPayment(
-            @Path long studentId,
-            @Body StudentPaymentInsertion studentPaymentInsertion
-    );
+    Long addPayment(@Body StudentPayment studentPayment);
 }
