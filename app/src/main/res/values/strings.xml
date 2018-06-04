@@ -1,7 +1,7 @@
 <resources>
     <string name="fabric_api_key" translatable="false">ac9391d74166e526723be6a988b21a3305f0a642</string>
 
-    <string name="app_name">Hogwarts Teacher</string>
+    <string name="app_name">HTeacher</string>
 
     <string name="login">Логин</string>
     <string name="password">Пароль</string>
@@ -27,6 +27,13 @@
     <string name="page_my_lessons">Мои занятия</string>
     <string name="page_lesson">Занятие</string>
     <string name="page_teacher">Учитель</string>
+    <string name="page_student_payment">Оплата студента</string>
+
+    <string name="student_label">Студент:</string>
+    <string name="month_payment_label">Внесено за %1$s:</string>
+    <string name="month_payment_amount">%1$d ₽</string>
+    <string name="payment_new_amount">Введите сумму</string>
+    <string name="payment_new_add">Добавить</string>
 
     <string name="lesson_time">%1$s - %2$s</string>
 
@@ -61,6 +68,19 @@
     <string name="t_20_00">20:00</string>
     <string name="t_20_30">20:30</string>
     <string name="t_21_00">21:00</string>
+
+    <string name="january">январь</string>
+    <string name="february">февраль</string>
+    <string name="march">март</string>
+    <string name="april">апрель</string>
+    <string name="may">май</string>
+    <string name="june">июнь</string>
+    <string name="july">июль</string>
+    <string name="august">август</string>
+    <string name="september">сентябрь</string>
+    <string name="october">октябрь</string>
+    <string name="november">ноябрь</string>
+    <string name="december">декабрь</string>
 
     <string name="current_day">%1$s, %2$02d.%3$02d.%4$d</string>
 

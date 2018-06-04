@@ -1,8 +1,8 @@
 package com.hogwarts_eng_school.hogwarts_teacher.service;
 
+import com.annimon.stream.Optional;
 import com.annimon.stream.Stream;
 import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
-import com.hogwarts_eng_school.hogwarts_teacher.data.StudentStatusType;
 
 import org.androidannotations.annotations.EBean;
 
@@ -17,6 +17,12 @@ public class StudentsService {
 
     public List<Student> getStudents() {
         return students;
+    }
+
+    public Optional<Student> getStudent(long id) {
+        return Stream.of(students)
+                .filter(it -> it.getId().equals(id))
+                .findFirst();
     }
 
     public List<Student> getGroupStudents(long groupId) {

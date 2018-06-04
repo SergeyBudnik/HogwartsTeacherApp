@@ -6,12 +6,14 @@ import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.CabinetsRest;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.GroupsRest;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.Headers;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.StudentAttendanceRest;
+import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.StudentPaymentRest;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.StudentsRest;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.TeacherRest;
 import com.hogwarts_eng_school.hogwarts_teacher.service.AuthService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.CabinetsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.GroupsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.StudentAttendanceService;
+import com.hogwarts_eng_school.hogwarts_teacher.service.StudentPaymentService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.StudentsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TeachersService;
 
@@ -34,6 +36,8 @@ public class SchoolDataRestWrapper extends AbstractAuthWrapper {
     TeacherRest teacherRest;
     @RestService
     StudentAttendanceRest studentAttendanceRest;
+    @RestService
+    StudentPaymentRest studentPaymentRest;
 
     @Bean
     AuthService authService;
@@ -47,6 +51,8 @@ public class SchoolDataRestWrapper extends AbstractAuthWrapper {
     TeachersService teachersService;
     @Bean
     StudentAttendanceService studentAttendanceService;
+    @Bean
+    StudentPaymentService studentPaymentService;
 
     @Background
     public void load(RestListener<Void> listener) {
@@ -55,7 +61,7 @@ public class SchoolDataRestWrapper extends AbstractAuthWrapper {
 
             authenticateTo(
                     authService.getUserInfo().map(AppUserInfo::getAuthToken).orElseThrow(RuntimeException::new),
-                    groupsRest, studentsRest, cabinetsRest, teacherRest, studentAttendanceRest
+                    groupsRest, studentsRest, cabinetsRest, teacherRest, studentAttendanceRest, studentPaymentRest
             );
 
             groupsService.setGroups(groupsRest.getAllGroups());
@@ -63,6 +69,7 @@ public class SchoolDataRestWrapper extends AbstractAuthWrapper {
             cabinetsService.setCabinets(cabinetsRest.getAllCabinets());
             teachersService.setTeachers(teacherRest.getTeachers());
             studentAttendanceService.setAttendances(studentAttendanceRest.getAllAttendances());
+            studentPaymentService.setPayments(studentPaymentRest.getAllPayments());
 
             listener.onSuccess(null);
         } catch (HttpStatusCodeException e) {

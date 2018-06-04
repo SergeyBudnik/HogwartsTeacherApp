@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             app:app_font="bold"
-            android:text="Оплата студента"
+            android:text="@string/page_student_payment"
             android:textColor="@color/white"
             android:textSize="15sp"/>
 
@@ -45,15 +45,110 @@
             android:id="@+id/content"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/student_label"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="16sp"
+                    app:app_font="regular"/>
+
+                <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    app:app_font="bold"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_very_light"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
+                    android:id="@+id/month_payment_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="16sp"
+                    app:app_font="regular"/>
+
+                <com.hogwarts_eng_school.hogwarts_teacher.view.common.FontableTextView
+                    android:id="@+id/month_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    app:app_font="bold"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_very_light"/>
+
+            <EditText
+                android:id="@+id/payment_amount_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:gravity="center"
+                android:hint="@string/payment_new_amount"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_medium"
+                android:background="@color/gray_very_light"
+                android:inputType="number"/>
 
             <TextView
+                android:id="@+id/payment_amount_new_add"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
                 android:gravity="center"
-                android:text="В процессе разработки"
-                android:textColor="@color/gray_medium"
-                android:textSize="20sp"/>
+                android:text="@string/payment_new_add"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:background="@color/primary_normal"/>
 
         </LinearLayout>
 
