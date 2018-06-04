@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.hogwarts_eng_school.hogwarts_teacher.adapter.TodayLessonsListAdapter;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Lesson;
+import com.hogwarts_eng_school.hogwarts_teacher.data.group.Lesson;
 import com.hogwarts_eng_school.hogwarts_teacher.service.CabinetsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.LessonsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TimeService;

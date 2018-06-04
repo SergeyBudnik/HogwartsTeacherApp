@@ -6,8 +6,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.annimon.stream.Stream;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
-import com.hogwarts_eng_school.hogwarts_teacher.data.StudentPayment;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.Student;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.StudentPayment;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.listener.RestListener;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.wrapper.StudentPaymentRestWrapper;
 import com.hogwarts_eng_school.hogwarts_teacher.service.StudentPaymentService;

@@ -2,7 +2,7 @@ package com.hogwarts_eng_school.hogwarts_teacher.service;
 
 import com.annimon.stream.Optional;
 import com.hogwarts_eng_school.hogwarts_teacher.dao.AuthDao;
-import com.hogwarts_eng_school.hogwarts_teacher.data.AppUserInfo;
+import com.hogwarts_eng_school.hogwarts_teacher.data.auth.AppUserInfo;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;

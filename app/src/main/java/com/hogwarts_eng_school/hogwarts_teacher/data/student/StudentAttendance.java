@@ -1,4 +1,4 @@
-package com.hogwarts_eng_school.hogwarts_teacher.data;
+package com.hogwarts_eng_school.hogwarts_teacher.data.student;
 
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonProperty;

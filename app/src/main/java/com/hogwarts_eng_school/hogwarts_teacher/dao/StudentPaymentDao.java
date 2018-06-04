@@ -2,8 +2,7 @@ package com.hogwarts_eng_school.hogwarts_teacher.dao;
 
 import android.content.Context;
 
-import com.hogwarts_eng_school.hogwarts_teacher.data.StudentPayment;
-import com.hogwarts_eng_school.hogwarts_teacher.data.StudentPayment;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.StudentPayment;
 
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;

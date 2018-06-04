@@ -6,7 +6,7 @@ import android.view.animation.Animation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import com.hogwarts_eng_school.hogwarts_teacher.data.AuthInfo;
+import com.hogwarts_eng_school.hogwarts_teacher.data.auth.AuthInfo;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.listener.RestListener;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.wrapper.LoginRestWrapper;
 

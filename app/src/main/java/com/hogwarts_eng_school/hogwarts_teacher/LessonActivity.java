@@ -7,9 +7,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.hogwarts_eng_school.hogwarts_teacher.adapter.StudentsListAdapter;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Lesson;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Teacher;
+import com.hogwarts_eng_school.hogwarts_teacher.data.group.Lesson;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.Student;
+import com.hogwarts_eng_school.hogwarts_teacher.data.teacher.Teacher;
 import com.hogwarts_eng_school.hogwarts_teacher.service.LessonsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.StudentsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TeachersService;

@@ -1,4 +1,4 @@
-package com.hogwarts_eng_school.hogwarts_teacher.data;
+package com.hogwarts_eng_school.hogwarts_teacher.data.common;
 
 import com.hogwarts_eng_school.hogwarts_teacher.R;
 

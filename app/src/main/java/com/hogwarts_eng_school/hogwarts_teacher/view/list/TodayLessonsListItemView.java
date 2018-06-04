@@ -10,11 +10,11 @@ import android.widget.TextView;
 
 import com.annimon.stream.Optional;
 import com.hogwarts_eng_school.hogwarts_teacher.R;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Cabinet;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Lesson;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
-import com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendance;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Teacher;
+import com.hogwarts_eng_school.hogwarts_teacher.data.cabinet.Cabinet;
+import com.hogwarts_eng_school.hogwarts_teacher.data.group.Lesson;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.Student;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.StudentAttendance;
+import com.hogwarts_eng_school.hogwarts_teacher.data.teacher.Teacher;
 import com.hogwarts_eng_school.hogwarts_teacher.service.AuthService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.StudentAttendanceService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TeachersService;

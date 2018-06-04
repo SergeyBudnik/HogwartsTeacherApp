@@ -1,8 +1,8 @@
 package com.hogwarts_eng_school.hogwarts_teacher.rest.raw;
 
-import com.hogwarts_eng_school.hogwarts_teacher.data.AuthInfo;
-import com.hogwarts_eng_school.hogwarts_teacher.data.LoginCredentials;
-import com.hogwarts_eng_school.hogwarts_teacher.data.UserInfo;
+import com.hogwarts_eng_school.hogwarts_teacher.data.auth.AuthInfo;
+import com.hogwarts_eng_school.hogwarts_teacher.data.auth.LoginCredentials;
+import com.hogwarts_eng_school.hogwarts_teacher.data.auth.UserInfo;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.mapper.JsonMapper;
 
 import org.androidannotations.rest.spring.annotations.Body;

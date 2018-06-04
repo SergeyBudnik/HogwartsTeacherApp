@@ -1,4 +1,7 @@
-package com.hogwarts_eng_school.hogwarts_teacher.data;
+package com.hogwarts_eng_school.hogwarts_teacher.data.group;
+
+import com.hogwarts_eng_school.hogwarts_teacher.data.common.DayOfWeek;
+import com.hogwarts_eng_school.hogwarts_teacher.data.common.Time;
 
 import java.io.Serializable;
 

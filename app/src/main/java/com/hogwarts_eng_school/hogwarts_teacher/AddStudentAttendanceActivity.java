@@ -7,8 +7,8 @@ import android.widget.TextView;
 
 import com.annimon.stream.Objects;
 import com.annimon.stream.Stream;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
-import com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendance;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.Student;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.StudentAttendance;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.listener.RestListener;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.wrapper.StudentAttendanceRestWrapper;
 import com.hogwarts_eng_school.hogwarts_teacher.service.StudentsService;
@@ -24,9 +24,9 @@ import org.androidannotations.annotations.res.AnimationRes;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import static com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendance.Type.INVALID_SKIP;
-import static com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendance.Type.VALID_SKIP;
-import static com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendance.Type.VISITED;
+import static com.hogwarts_eng_school.hogwarts_teacher.data.student.StudentAttendance.Type.INVALID_SKIP;
+import static com.hogwarts_eng_school.hogwarts_teacher.data.student.StudentAttendance.Type.VALID_SKIP;
+import static com.hogwarts_eng_school.hogwarts_teacher.data.student.StudentAttendance.Type.VISITED;
 
 @EActivity(R.layout.activity_add_student_attendance)
 public class AddStudentAttendanceActivity extends BaseActivity {

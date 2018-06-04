@@ -6,7 +6,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hogwarts_eng_school.hogwarts_teacher.R;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Teacher;
+import com.hogwarts_eng_school.hogwarts_teacher.data.teacher.Teacher;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TeachersService;
 import com.hogwarts_eng_school.hogwarts_teacher.view.common.LoadableImageView;
 

@@ -2,7 +2,7 @@ package com.hogwarts_eng_school.hogwarts_teacher.dao;
 
 import android.content.Context;
 
-import com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendance;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.StudentAttendance;
 
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;

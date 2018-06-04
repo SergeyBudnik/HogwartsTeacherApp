@@ -4,7 +4,7 @@ import com.annimon.stream.Objects;
 import com.annimon.stream.Optional;
 import com.annimon.stream.Stream;
 import com.hogwarts_eng_school.hogwarts_teacher.dao.StudentAttendanceDao;
-import com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendance;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.StudentAttendance;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;

@@ -1,4 +1,4 @@
-package com.hogwarts_eng_school.hogwarts_teacher.data;
+package com.hogwarts_eng_school.hogwarts_teacher.data.teacher;
 
 import java.io.Serializable;
 import java.util.List;

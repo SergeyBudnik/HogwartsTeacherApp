@@ -1,7 +1,7 @@
 package com.hogwarts_eng_school.hogwarts_teacher.service;
 
 import com.hogwarts_eng_school.hogwarts_teacher.dao.GroupsDao;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Group;
+import com.hogwarts_eng_school.hogwarts_teacher.data.group.Group;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;

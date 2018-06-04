@@ -3,12 +3,12 @@ package com.hogwarts_eng_school.hogwarts_teacher.service;
 import com.annimon.stream.Objects;
 import com.annimon.stream.Optional;
 import com.annimon.stream.Stream;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Cabinet;
-import com.hogwarts_eng_school.hogwarts_teacher.data.DayOfWeek;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Group;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Lesson;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Teacher;
+import com.hogwarts_eng_school.hogwarts_teacher.data.cabinet.Cabinet;
+import com.hogwarts_eng_school.hogwarts_teacher.data.common.DayOfWeek;
+import com.hogwarts_eng_school.hogwarts_teacher.data.group.Group;
+import com.hogwarts_eng_school.hogwarts_teacher.data.group.Lesson;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.Student;
+import com.hogwarts_eng_school.hogwarts_teacher.data.teacher.Teacher;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;

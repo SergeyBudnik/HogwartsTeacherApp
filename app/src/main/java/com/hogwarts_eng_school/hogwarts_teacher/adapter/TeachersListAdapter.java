@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.hogwarts_eng_school.hogwarts_teacher.data.Teacher;
+import com.hogwarts_eng_school.hogwarts_teacher.data.teacher.Teacher;
 import com.hogwarts_eng_school.hogwarts_teacher.view.list.TeacherListItemView;
 import com.hogwarts_eng_school.hogwarts_teacher.view.list.TeacherListItemView_;
 

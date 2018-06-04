@@ -7,10 +7,10 @@ import android.widget.BaseAdapter;
 
 import com.annimon.stream.Objects;
 import com.annimon.stream.Stream;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Cabinet;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Group;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Lesson;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
+import com.hogwarts_eng_school.hogwarts_teacher.data.cabinet.Cabinet;
+import com.hogwarts_eng_school.hogwarts_teacher.data.group.Group;
+import com.hogwarts_eng_school.hogwarts_teacher.data.group.Lesson;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.Student;
 import com.hogwarts_eng_school.hogwarts_teacher.view.list.TodayLessonsListItemView;
 import com.hogwarts_eng_school.hogwarts_teacher.view.list.TodayLessonsListItemView_;
 

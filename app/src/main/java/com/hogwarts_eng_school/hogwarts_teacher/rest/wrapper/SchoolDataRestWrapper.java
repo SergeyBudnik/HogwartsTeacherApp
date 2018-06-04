@@ -1,10 +1,9 @@
 package com.hogwarts_eng_school.hogwarts_teacher.rest.wrapper;
 
-import com.hogwarts_eng_school.hogwarts_teacher.data.AppUserInfo;
+import com.hogwarts_eng_school.hogwarts_teacher.data.auth.AppUserInfo;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.listener.RestListener;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.CabinetsRest;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.GroupsRest;
-import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.Headers;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.StudentAttendanceRest;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.StudentPaymentRest;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.StudentsRest;

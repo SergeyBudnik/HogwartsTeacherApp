@@ -1,10 +1,10 @@
 package com.hogwarts_eng_school.hogwarts_teacher.rest.wrapper;
 
-import com.hogwarts_eng_school.hogwarts_teacher.data.AppUserInfo;
-import com.hogwarts_eng_school.hogwarts_teacher.data.AuthInfo;
-import com.hogwarts_eng_school.hogwarts_teacher.data.LoginCredentials;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Teacher;
-import com.hogwarts_eng_school.hogwarts_teacher.data.UserInfo;
+import com.hogwarts_eng_school.hogwarts_teacher.data.auth.AppUserInfo;
+import com.hogwarts_eng_school.hogwarts_teacher.data.auth.AuthInfo;
+import com.hogwarts_eng_school.hogwarts_teacher.data.auth.LoginCredentials;
+import com.hogwarts_eng_school.hogwarts_teacher.data.teacher.Teacher;
+import com.hogwarts_eng_school.hogwarts_teacher.data.auth.UserInfo;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.listener.RestListener;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.LoginRest;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.TeacherRest;
@@ -16,7 +16,6 @@ import org.androidannotations.annotations.EBean;
 import org.androidannotations.rest.spring.annotations.RestService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpStatusCodeException;
-import org.springframework.web.client.RestClientException;
 
 @EBean
 public class LoginRestWrapper extends AbstractAuthWrapper {

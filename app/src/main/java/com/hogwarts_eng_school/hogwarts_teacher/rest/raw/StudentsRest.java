@@ -1,6 +1,6 @@
 package com.hogwarts_eng_school.hogwarts_teacher.rest.raw;
 
-import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.Student;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.mapper.JsonMapper;
 
 import org.androidannotations.rest.spring.annotations.Get;

@@ -9,7 +9,7 @@ import com.annimon.stream.Optional;
 import com.annimon.stream.Stream;
 import com.hogwarts_eng_school.hogwarts_teacher.R;
 import com.hogwarts_eng_school.hogwarts_teacher.dao.TeachersDao;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Teacher;
+import com.hogwarts_eng_school.hogwarts_teacher.data.teacher.Teacher;
 import com.hogwarts_eng_school.hogwarts_teacher.utils.BitmapUtils;
 
 import org.androidannotations.annotations.Bean;

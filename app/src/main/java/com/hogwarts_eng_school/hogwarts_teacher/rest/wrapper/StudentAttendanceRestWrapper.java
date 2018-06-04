@@ -1,6 +1,6 @@
 package com.hogwarts_eng_school.hogwarts_teacher.rest.wrapper;
 
-import com.hogwarts_eng_school.hogwarts_teacher.data.StudentAttendance;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.StudentAttendance;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.listener.RestListener;
 import com.hogwarts_eng_school.hogwarts_teacher.rest.raw.StudentAttendanceRest;
 import com.hogwarts_eng_school.hogwarts_teacher.service.AuthService;

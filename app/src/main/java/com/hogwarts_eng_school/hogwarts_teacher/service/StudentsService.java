@@ -3,14 +3,14 @@ package com.hogwarts_eng_school.hogwarts_teacher.service;
 import com.annimon.stream.Optional;
 import com.annimon.stream.Stream;
 import com.hogwarts_eng_school.hogwarts_teacher.dao.StudentsDao;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.Student;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
 import java.util.List;
 
-import static com.hogwarts_eng_school.hogwarts_teacher.data.StudentStatusType.GROUP_ASSIGNED;
+import static com.hogwarts_eng_school.hogwarts_teacher.data.student.StudentStatusType.GROUP_ASSIGNED;
 
 @EBean
 public class StudentsService {

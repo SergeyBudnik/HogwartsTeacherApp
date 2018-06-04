@@ -1,7 +1,7 @@
 package com.hogwarts_eng_school.hogwarts_teacher.service;
 
 import com.annimon.stream.Optional;
-import com.hogwarts_eng_school.hogwarts_teacher.data.DayOfWeek;
+import com.hogwarts_eng_school.hogwarts_teacher.data.common.DayOfWeek;
 
 import org.androidannotations.annotations.EBean;
 

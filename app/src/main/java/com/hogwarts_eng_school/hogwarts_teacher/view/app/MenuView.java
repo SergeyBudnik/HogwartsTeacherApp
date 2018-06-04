@@ -15,7 +15,7 @@ import com.hogwarts_eng_school.hogwarts_teacher.MyLessonsActivity_;
 import com.hogwarts_eng_school.hogwarts_teacher.R;
 import com.hogwarts_eng_school.hogwarts_teacher.TeachersListActivity_;
 import com.hogwarts_eng_school.hogwarts_teacher.TodayLessonsActivity_;
-import com.hogwarts_eng_school.hogwarts_teacher.data.AppUserInfo;
+import com.hogwarts_eng_school.hogwarts_teacher.data.auth.AppUserInfo;
 import com.hogwarts_eng_school.hogwarts_teacher.service.AuthService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TeachersService;
 import com.hogwarts_eng_school.hogwarts_teacher.view.common.LoadableImageView;

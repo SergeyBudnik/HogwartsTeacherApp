@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.annimon.stream.function.Consumer;
-import com.hogwarts_eng_school.hogwarts_teacher.data.Student;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.Student;
 import com.hogwarts_eng_school.hogwarts_teacher.view.list.StudentsListItemView;
 import com.hogwarts_eng_school.hogwarts_teacher.view.list.StudentsListItemView_;
 

@@ -2,7 +2,7 @@ package com.hogwarts_eng_school.hogwarts_teacher.service;
 
 import com.annimon.stream.Stream;
 import com.hogwarts_eng_school.hogwarts_teacher.dao.StudentPaymentDao;
-import com.hogwarts_eng_school.hogwarts_teacher.data.StudentPayment;
+import com.hogwarts_eng_school.hogwarts_teacher.data.student.StudentPayment;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
