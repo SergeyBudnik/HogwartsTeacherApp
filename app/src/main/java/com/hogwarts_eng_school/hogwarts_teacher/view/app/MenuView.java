@@ -1,28 +1,18 @@
 package com.hogwarts_eng_school.hogwarts_teacher.view.app;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.graphics.PorterDuff;
 import android.util.AttributeSet;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
+import com.annimon.stream.Stream;
 import com.hogwarts_eng_school.hogwarts_teacher.BaseActivity;
-import com.hogwarts_eng_school.hogwarts_teacher.LoginActivity_;
 import com.hogwarts_eng_school.hogwarts_teacher.MyLessonsActivity_;
 import com.hogwarts_eng_school.hogwarts_teacher.R;
 import com.hogwarts_eng_school.hogwarts_teacher.TeachersListActivity_;
 import com.hogwarts_eng_school.hogwarts_teacher.TodayLessonsActivity_;
-import com.hogwarts_eng_school.hogwarts_teacher.data.auth.AppUserInfo;
-import com.hogwarts_eng_school.hogwarts_teacher.service.AuthService;
-import com.hogwarts_eng_school.hogwarts_teacher.service.TeachersService;
-import com.hogwarts_eng_school.hogwarts_teacher.view.common.LoadableImageView;
+import com.hogwarts_eng_school.hogwarts_teacher.view.app.menu.MenuItemView;
 
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Bean;
-import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
@@ -31,35 +21,22 @@ import lombok.Getter;
 @EViewGroup(R.layout.view_menu)
 public class MenuView extends RelativeLayout {
     public enum Page {
-        NONE(0, 0, 0),
-        MY_LESSONS(R.id.my_lessons_mark, R.id.my_lessons_icon, R.id.my_lessons_label),
-        TODAY_LESSONS(R.id.today_lessons_mark, R.id.today_lessons_icon, R.id.today_lessons_label),
-        TEACHERS(R.id.teachers_mark, R.id.teachers_icon, R.id.teachers_label);
+        NONE(0),
+        MY_LESSONS(R.id.my_lessons),
+        TODAY_LESSONS(R.id.today_lessons),
+        TEACHERS(R.id.teachers);
 
-        @Getter private int markId;
-        @Getter private int iconViewId;
-        @Getter private int labelViewId;
+        @Getter private int id;
 
-        Page(int markViewId, int iconViewId, int labelViewId) {
-            this.markId = markViewId;
-            this.iconViewId = iconViewId;
-            this.labelViewId = labelViewId;
-        }
+        Page(int id) { this.id = id; }
     }
 
-    @ViewById(R.id.icon)
-    LoadableImageView iconView;
-    @ViewById(R.id.name)
-    TextView nameView;
-    @ViewById(R.id.login)
-    TextView loginView;
-    @ViewById(R.id.version)
-    TextView versionView;
-
-    @Bean
-    AuthService authService;
-    @Bean
-    TeachersService teachersService;
+    @ViewById(R.id.my_lessons)
+    MenuItemView myLessonsMenuItemView;
+    @ViewById(R.id.today_lessons)
+    MenuItemView todayLessonsMenuItemView;
+    @ViewById(R.id.teachers)
+    MenuItemView teachersMenuItemView;
 
     public MenuView(Context context) {
         super(context);
@@ -71,85 +48,25 @@ public class MenuView extends RelativeLayout {
 
     @AfterViews
     void init() {
-        if (!isInEditMode()) {
-            AppUserInfo appUserInfo = authService.getUserInfo().orElseThrow(RuntimeException::new);
+        BaseActivity activity = (BaseActivity) getContext();
 
-            iconView.configure(
-                    "user-icon",
-                    R.color.gray_very_light,
-                    () -> teachersService.getImage(appUserInfo.getLogin()).orElseThrow(RuntimeException::new),
-                    () -> null
-            );
+        myLessonsMenuItemView.bind(R.drawable.my_lessons, R.string.menu_my_lessons, () ->
+            activity.redirect(MyLessonsActivity_.class, 0, 0, true)
+        );
 
-            nameView.setText(appUserInfo.getName());
-            loginView.setText(appUserInfo.getLogin());
-        }
+        todayLessonsMenuItemView.bind(R.drawable.today_lessons, R.string.menu_today_lessons, () ->
+            activity.redirect(TodayLessonsActivity_.class, 0, 0, true)
+        );
 
-        versionView.setText(getResources().getString(R.string.menu_version, getVersion()));
-    }
-
-    @Click(R.id.my_lessons)
-    void onMyLessonsClick() {
-        getActivity().redirect(MyLessonsActivity_.class, 0, 0, true);
-    }
-
-    @Click(R.id.today_lessons)
-    void onTodayLessonsClick() {
-        getActivity().redirect(TodayLessonsActivity_.class, 0, 0, true);
-    }
-
-    @Click(R.id.teachers)
-    void onTeachersClick() {
-        getActivity().redirect(TeachersListActivity_.class, 0, 0, true);
-    }
-
-    @Click(R.id.exit)
-    void onExitClick() {
-        authService.clearAuthInfo();
-
-        getActivity().redirect(LoginActivity_.class, 0, 0, true);
+        teachersMenuItemView.bind(R.drawable.teacher, R.string.menu_teachers, () ->
+            activity.redirect(TeachersListActivity_.class, 0, 0, true)
+        );
     }
 
     public void setCurrentPage(Page currentPage) {
-        for (Page page : Page.values()) {
-            int color = getResources().getColor(page == currentPage ? R.color.white : R.color.white);
-
-            View markView = findViewById(page.getMarkId());
-
-            if (markView != null) {
-                markView.setVisibility(currentPage == page ? VISIBLE : INVISIBLE);
-            }
-
-            ImageView iconView = findViewById(page.getIconViewId());
-
-            if (iconView != null) {
-                iconView.getDrawable().setColorFilter(color, PorterDuff.Mode.SRC_IN);
-            }
-
-            TextView labelView = findViewById(page.getLabelViewId());
-
-            if (labelView != null) {
-                labelView.setTextColor(color);
-            }
-        }
-    }
-
-    private String getVersion() {
-        if (isInEditMode()) {
-            return "1.0.0";
-        }
-
-        try {
-            return getContext().getPackageManager().getPackageInfo(
-                    getContext().getPackageName(),
-                    0
-            ).versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private BaseActivity getActivity() {
-        return (BaseActivity) getContext();
+        Stream
+                .of(Page.values())
+                .filter(it -> it != Page.NONE)
+                .forEach(page -> findViewById(page.id).setSelected(currentPage == page));
     }
 }
