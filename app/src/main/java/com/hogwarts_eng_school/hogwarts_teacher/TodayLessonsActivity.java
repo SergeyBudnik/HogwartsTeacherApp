@@ -2,12 +2,15 @@ package com.hogwarts_eng_school.hogwarts_teacher;
 
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ListView;
 
 import com.hogwarts_eng_school.hogwarts_teacher.adapter.TodayLessonsListAdapter;
 import com.hogwarts_eng_school.hogwarts_teacher.data.group.Lesson;
+import com.hogwarts_eng_school.hogwarts_teacher.rest.listener.RestListener;
+import com.hogwarts_eng_school.hogwarts_teacher.rest.wrapper.SchoolDataRestWrapper;
 import com.hogwarts_eng_school.hogwarts_teacher.service.CabinetsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.LessonsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TimeService;
@@ -18,6 +21,7 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ItemClick;
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
 import java.io.Serializable;
@@ -29,13 +33,15 @@ import java.util.Map;
 import static com.hogwarts_eng_school.hogwarts_teacher.LessonActivity.VIEW_LESSON_ACTION_ID;
 
 @EActivity(R.layout.activity_today_lessons)
-public class TodayLessonsActivity extends BaseActivity {
+public class TodayLessonsActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
     @ViewById(R.id.root)
     DrawerLayout rootView;
     @ViewById(R.id.content)
     View contentView;
     @ViewById(R.id.menu)
     MenuView menuView;
+    @ViewById(R.id.lessons_refresh)
+    SwipeRefreshLayout lessonsRefreshView;
     @ViewById(R.id.lessons)
     ListView lessonsView;
 
@@ -49,6 +55,9 @@ public class TodayLessonsActivity extends BaseActivity {
     @Bean
     TimeService timeService;
 
+    @Bean
+    SchoolDataRestWrapper schoolDataRestWrapper;
+
     @AfterViews
     void init() {
         initMenu(rootView, contentView);
@@ -56,6 +65,30 @@ public class TodayLessonsActivity extends BaseActivity {
         menuView.setCurrentPage(MenuView.Page.TODAY_LESSONS);
 
         lessonsView.setAdapter(todayLessonsListAdapter);
+
+        lessonsRefreshView.setOnRefreshListener(this);
+
+        setLessons();
+    }
+
+    @Override
+    public void onRefresh() {
+        schoolDataRestWrapper.load(new RestListener<Void>() {
+            @Override
+            public void onSuccess(Void data) {
+                onRefreshFinished();
+            }
+
+            @Override
+            public void onFailure() {
+                onRefreshFinished();
+            }
+        });
+    }
+
+    @UiThread
+    void onRefreshFinished() {
+        lessonsRefreshView.setRefreshing(false);
 
         setLessons();
     }
