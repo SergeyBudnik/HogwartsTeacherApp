@@ -57,7 +57,7 @@
 
         </LinearLayout>
 
-        <com.hogwarts_eng_school.hogwarts_teacher.view.app.MenuView_
+        <com.hogwarts_eng_school.hogwarts_teacher.view.app.menu.MenuView_
             android:id="@+id/menu"
             android:layout_width="250dp"
             android:layout_height="match_parent"

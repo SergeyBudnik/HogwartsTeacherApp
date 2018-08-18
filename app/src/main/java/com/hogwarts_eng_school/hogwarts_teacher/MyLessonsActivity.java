@@ -11,7 +11,7 @@ import com.hogwarts_eng_school.hogwarts_teacher.data.group.Lesson;
 import com.hogwarts_eng_school.hogwarts_teacher.service.CabinetsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.LessonsService;
 import com.hogwarts_eng_school.hogwarts_teacher.service.TimeService;
-import com.hogwarts_eng_school.hogwarts_teacher.view.app.MenuView;
+import com.hogwarts_eng_school.hogwarts_teacher.view.app.menu.MenuView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;

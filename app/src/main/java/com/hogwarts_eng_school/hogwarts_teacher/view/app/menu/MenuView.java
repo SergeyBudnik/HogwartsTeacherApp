@@ -1,4 +1,4 @@
-package com.hogwarts_eng_school.hogwarts_teacher.view.app;
+package com.hogwarts_eng_school.hogwarts_teacher.view.app.menu;
 
 import android.content.Context;
 import android.util.AttributeSet;
